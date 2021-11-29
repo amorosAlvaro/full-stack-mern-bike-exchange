@@ -9,5 +9,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 13,
   },
-  rules: { 'linebreak-style': 0 },
+  rules: {
+    'linebreak-style': 0,
+    'comma-dangle': ['error', 'only-multiline'],
+  },
 };
