@@ -7,18 +7,17 @@ module.exports = mongoose.model(
   Schema({
     _id: Schema.Types.ObjectId,
     name: {
-      String,
+      type: String,
       required: true,
     },
     email: {
-      String,
+      type: String,
       required: true,
     },
     province: {
-      String,
+      type: String,
       required: true,
     },
-    phone: String,
     bikes: [
       {
         type: Schema.Types.ObjectId,
