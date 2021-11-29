@@ -3,29 +3,35 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 module.exports = mongoose.model(
-  'User',
+  'Bike',
   Schema({
     _id: Schema.Types.ObjectId,
-    name: {
+    make: {
       String,
       required: true,
     },
-    email: {
+    model: {
       String,
       required: true,
     },
-    province: {
-      String,
+    km: {
+      Number,
       required: true,
     },
-    phone: String,
-    bikes: {
+    year: {
+      Number,
+      required: true,
+    },
+    change: {
+      Array,
+      require: true,
+    },
+    user: {
+      require: true,
       type: Schema.Types.ObjectId,
-      ref: 'Bike',
+      ref: 'User',
     },
-    favorites: {
-      type: Schema.Types.ObjectId,
-      ref: 'Bike',
-    },
+    img: String,
+    display: Boolean,
   })
 );
