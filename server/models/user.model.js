@@ -5,18 +5,19 @@ const { Schema } = mongoose;
 module.exports = mongoose.model(
   'User',
   Schema({
-    _id: Schema.Types.ObjectId,
-    name: {
+    userName: {
+      type: String,
+      required: true,
+    },
+    password: {
       type: String,
       required: true,
     },
     email: {
       type: String,
-      required: true,
     },
     province: {
       type: String,
-      required: true,
     },
     bikes: [
       {

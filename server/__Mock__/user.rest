@@ -1,7 +1,30 @@
-POST http://localhost3030/users
+GET  http://localhost:3030/users
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:3030/users
 Content-Type: application/json
 
 {
-    "usename": "Kyle"
-    "password":123
+    "userName": "Kyle",
+    "password":"123"
+}
+
+
+###
+
+GET  http://localhost:3030/users/Kyle
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:3030/login
+Content-Type: application/json
+
+{
+    "userName": "John",
+    "password":"321"
 }

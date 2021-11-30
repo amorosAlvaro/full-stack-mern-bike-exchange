@@ -3,15 +3,15 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 function checkPasswd(passwd, user) {
-  if (!user.passwd) {
+  if (!user.password) {
     return false;
   }
-  return bcrypt.compare(passwd, user.passwd);
+  return bcrypt.compare(passwd, user.password);
 }
 
 function createJWT(user) {
   const tokenPayload = {
-    name: user.name,
+    userName: user.userName,
     id: user._id,
   };
 
