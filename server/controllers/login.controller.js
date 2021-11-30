@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken');
 const auth = require('../helpers/auth.helpers');
 const User = require('../models/user.model');
 
@@ -8,11 +9,10 @@ async function logUser(req, res) {
     const validPassword = await auth.checkPasswd(password, user);
 
     if (user && validPassword) {
-      const jwToken = auth.createJWT(user);
-      res.json({
-        user: user.name,
-        token: jwToken,
-      });
+      const jwToken = jwt.sign({ _id: user.id }, process.env.SECRET);
+      res.header('auth-token', jwToken).send(jwToken);
+
+      user.accessToken = jwToken;
       return jwToken;
     }
   } catch {

@@ -1,12 +1,6 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/user.model');
 
-function getAllUsers(req, res, next) {
-  User.find({})
-    .then((result) => res.send(result))
-    .catch((err) => next(err));
-}
-
 async function addUser(req, res, next) {
   try {
     const user = req.body;

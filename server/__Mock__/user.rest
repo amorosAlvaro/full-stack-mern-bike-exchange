@@ -8,8 +8,10 @@ POST http://localhost:3030/users
 Content-Type: application/json
 
 {
-    "userName": "Kyle",
-    "password":"123"
+    "userName": "Pedro",
+    "password":"1235",
+    "email": "Pedro.23@gamail.com",
+    "province": "Madrid"
 }
 
 
@@ -25,6 +27,17 @@ POST http://localhost:3030/login
 Content-Type: application/json
 
 {
-    "userName": "John",
-    "password":"321"
+    "userName": "Pedro",
+    "password":"1235"
+}
+
+
+###
+
+POST http://localhost:3030/bikes
+Content-Type: application/json
+
+
+{
+    "make": "Honda"
 }

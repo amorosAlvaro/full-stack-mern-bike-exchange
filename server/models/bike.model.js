@@ -5,29 +5,23 @@ const { Schema } = mongoose;
 module.exports = mongoose.model(
   'Bike',
   Schema({
-    _id: Schema.Types.ObjectId,
     make: {
-      String,
+      type: String,
       required: true,
     },
     model: {
-      String,
-      required: true,
+      type: String,
     },
     km: {
-      Number,
-      required: true,
+      type: Number,
     },
     year: {
-      Number,
-      required: true,
+      type: Number,
     },
     change: {
-      Array,
-      require: true,
+      type: Array,
     },
     user: {
-      require: true,
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
