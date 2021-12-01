@@ -20,6 +20,26 @@ async function postBike(req, res, next) {
   }
 }
 
+function deleteBike(req, res, next) {
+  const tokenUserId = req.user._id;
+  const bikeOwnerId = req.body.owner;
+  console.log(tokenUserId);
+  console.log(bikeOwnerId);
+  if (tokenUserId === bikeOwnerId) {
+    Bike.findByIdAndDelete(req.body._id)
+      .then((result) => {
+        console.log(result);
+        console.log(req.body._id);
+        if (result) {
+          res.status(202).json({ deletedId: req.params._id });
+        } else {
+          res.status(404).json({ message: 'Not found' });
+        }
+      })
+      .catch((err) => next(err));
+  }
+}
+
 async function addBikeToFavorites(req, res, next) {
   const bikeId = req.body;
   const userId = req.user;
@@ -50,56 +70,10 @@ async function deleteBikeFromFavorites(req, res, next) {
   }
 }
 
-// async function deleteRecipeToUser(req, res, next) {
-//   const { id, recipeid } = req.params;
-//   try {
-//     const user = await User.findById(id);
-//     const recipesFiltered = user.recipes
-//       .map((recipe) => recipe.toString())
-//       .filter((item) => item !== recipeid);
-//     user.recipes = recipesFiltered;
-//     user.save();
-//     res.json(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// }
-
-// async function addRecipeToUser(req, res, next) {
-//   const { id, recipeid } = req.params;
-//   try {
-//     const user = await User.findById(id);
-//     user.recipes = [...user.recipes, recipeid];
-//     user.save();
-//     res.json(user);
-//   } catch (error) {
-//     next(error);
-//   }
-// }
-
-// Protect this route
-// function addFavorites(req, res, next) {
-//   const bikeId = req.body._id;
-//   console.log(bikeId);
-//   const userId = req.user._id;
-//   console.log(userId);
-//   Bike.findOneAndUpdate(bikeId, { $set: { favorites: userId } }).then(() => {
-//     res.json('okey');
-//   });
-
-//   res.send('Done');
-// Bike.findByIdAndUpdate(
-//   req.body._idt
-
-// )
-
-// userId = req.user._id;
-// await req.body.addFavorites.push(userId);
-// res.status(201).send(userId);
-
 module.exports = {
   getAllBikes,
   postBike,
   addBikeToFavorites,
   deleteBikeFromFavorites,
+  deleteBike,
 };
