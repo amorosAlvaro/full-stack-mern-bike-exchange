@@ -22,10 +22,7 @@ async function postBike(req, res, next) {
 
 async function addBikeToFavorites(req, res, next) {
   const bikeId = req.body;
-  console.log();
   const userId = req.user;
-  console.log(bikeId);
-  console.log(userId);
   try {
     const bike = await Bike.findById(bikeId);
     bike.favorites = [...bike.favorites, userId];
@@ -35,6 +32,38 @@ async function addBikeToFavorites(req, res, next) {
     next(error);
   }
 }
+
+async function deleteBikeFromFavorites(req, res, next) {
+  const bikeId = req.body;
+  const userId = req.user._id;
+  console.log(userId);
+  try {
+    const bike = await Bike.findById(bikeId);
+    const favoriteFiltered = bike.favorites
+      .map((favorite) => favorite.toString())
+      .filter((item) => item !== userId);
+    bike.favorites = favoriteFiltered;
+    bike.save();
+    res.json(bike);
+  } catch (error) {
+    next(error);
+  }
+}
+
+// async function deleteRecipeToUser(req, res, next) {
+//   const { id, recipeid } = req.params;
+//   try {
+//     const user = await User.findById(id);
+//     const recipesFiltered = user.recipes
+//       .map((recipe) => recipe.toString())
+//       .filter((item) => item !== recipeid);
+//     user.recipes = recipesFiltered;
+//     user.save();
+//     res.json(user);
+//   } catch (error) {
+//     next(error);
+//   }
+// }
 
 // async function addRecipeToUser(req, res, next) {
 //   const { id, recipeid } = req.params;
@@ -68,4 +97,9 @@ async function addBikeToFavorites(req, res, next) {
 // await req.body.addFavorites.push(userId);
 // res.status(201).send(userId);
 
-module.exports = { getAllBikes, postBike, addBikeToFavorites };
+module.exports = {
+  getAllBikes,
+  postBike,
+  addBikeToFavorites,
+  deleteBikeFromFavorites,
+};
