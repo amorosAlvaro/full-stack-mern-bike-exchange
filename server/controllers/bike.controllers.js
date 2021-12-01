@@ -1,5 +1,7 @@
 const Bike = require('../models/bike.model');
 
+// TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
+
 async function getAllBikes({ query }, res, next) {
   try {
     const bikes = await Bike.find(query);
@@ -9,6 +11,61 @@ async function getAllBikes({ query }, res, next) {
   }
 }
 
+// Only need userID from token, get as method
+async function getFavoriteBikes(req, res, next) {
+  const userId = req.user._id;
+  try {
+    const bikes = await Bike.find();
+    const bikesFiltered = [];
+    bikes.forEach((item, index) => {
+      item.favorites.map((favorite) => {
+        if (userId === favorite.toString()) {
+          bikesFiltered.push(bikes[index]);
+        }
+      });
+    });
+    console.log(bikesFiltered);
+    res.json(bikesFiltered);
+  } catch (error) {
+    next(error);
+  }
+}
+
+// Only need userID from token, get as method
+async function getOwnedBikes(req, res, next) {
+  const userId = req.user._id;
+  try {
+    const bikes = await Bike.find();
+    const bikesFiltered = [];
+    bikes.forEach((item, index) => {
+      if (item.owner.toString() === userId) {
+        bikesFiltered.push(bikes[index]);
+      }
+    });
+    res.json(bikesFiltered);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteBikeFromFavorites(req, res, next) {
+  const bikeId = req.body;
+  const userId = req.user._id;
+  console.log(userId);
+  try {
+    const bike = await Bike.findById(bikeId);
+    const favoriteFiltered = bike.favorites
+      .map((favorite) => favorite.toString())
+      .filter((item) => item !== userId);
+    bike.favorites = favoriteFiltered;
+    bike.save();
+    res.json(bike);
+  } catch (error) {
+    next(error);
+  }
+}
+
+// Gets bike info from user, ownerID from token
 async function postBike(req, res, next) {
   try {
     const bike = req.body;
@@ -40,6 +97,7 @@ function deleteBike(req, res, next) {
   }
 }
 
+// Needs bikeID as input ad PUT route
 async function addBikeToFavorites(req, res, next) {
   const bikeId = req.body;
   const userId = req.user;
@@ -76,4 +134,6 @@ module.exports = {
   addBikeToFavorites,
   deleteBikeFromFavorites,
   deleteBike,
+  getFavoriteBikes,
+  getOwnedBikes,
 };
