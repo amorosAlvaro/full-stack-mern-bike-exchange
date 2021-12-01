@@ -19,17 +19,5 @@ module.exports = mongoose.model(
     province: {
       type: String,
     },
-    bikes: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Bike',
-      },
-    ],
-    favorites: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Bike',
-      },
-    ],
   })
 );

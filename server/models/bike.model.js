@@ -25,6 +25,12 @@ module.exports = mongoose.model(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    favorites: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+    ],
     img: String,
     display: Boolean,
   })
