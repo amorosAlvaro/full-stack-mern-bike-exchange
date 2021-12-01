@@ -21,7 +21,7 @@ module.exports = mongoose.model(
     change: {
       type: Array,
     },
-    user: {
+    owner: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },

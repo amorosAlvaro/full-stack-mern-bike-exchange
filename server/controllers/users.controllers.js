@@ -23,4 +23,4 @@ function getUserByName(req, res, next) {
     .catch((err) => next(err));
 }
 
-module.exports = { addUser, getAllUsers, getUserByName };
+module.exports = { addUser, getUserByName };

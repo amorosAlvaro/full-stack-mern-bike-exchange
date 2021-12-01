@@ -11,7 +11,6 @@ async function logUser(req, res) {
     if (user && validPassword) {
       const jwToken = jwt.sign({ _id: user.id }, process.env.SECRET);
       res.header('auth-token', jwToken).send(jwToken);
-
       user.accessToken = jwToken;
       return jwToken;
     }
