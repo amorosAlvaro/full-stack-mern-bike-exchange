@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "cross-env PORT=3030 nodemon",
-    "test": "jest --watchAll"
+    "test": "cross-env NODE_ENV=test jest --watchAll --collect-coverage"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
@@ -20,7 +21,8 @@
     "express-validator": "^6.13.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.13",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "jest": "^27.3.1"
   },
   "devDependencies": {
     "eslint": "^8.3.0",
@@ -28,5 +30,14 @@
     "eslint-plugin-import": "^2.25.3",
     "jest": "^27.3.1",
     "supertest": "^6.1.6"
+  },
+  "babel": {
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-modules-commonjs"
+        ]
+      }
+    }
   }
 }

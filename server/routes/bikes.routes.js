@@ -7,6 +7,7 @@ const {
   deleteBike,
   getFavoriteBikes,
   getOwnedBikes,
+  getBikeById,
 } = require('../controllers/bike.controllers');
 const authentication = require('../helpers/verification.helper');
 

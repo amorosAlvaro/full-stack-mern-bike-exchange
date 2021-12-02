@@ -1,8 +1,9 @@
 const userRouter = require('express').Router();
+const authentication = require('../helpers/verification.helper');
 
-const { addUser, getUserByName } = require('../controllers/users.controllers');
+const { addUser, deleteUser } = require('../controllers/users.controllers');
 
-userRouter.get('/:name', getUserByName);
 userRouter.post('/', addUser);
+userRouter.delete('/', authentication, deleteUser);
 
 module.exports = userRouter;
