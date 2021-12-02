@@ -2,9 +2,8 @@ const Bike = require('../models/bike.model');
 
 // TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
 
-// QUESTIONS: Get trough "params" or trough "body"?
-
-async function getAllBikes({ query }, res, next) {
+async function getAllBikes(req, res, next) {
+  const query = req.body;
   try {
     const bikes = await Bike.find(query);
     res.json(bikes);
@@ -19,28 +18,21 @@ async function postBike(req, res, next) {
     const bike = req.body;
     bike.owner = req.user._id;
     const newBike = Bike.create(bike);
-    res.status(201).send(newBike);
+    res.status(201).json({ newBike });
   } catch (error) {
     next(error);
   }
 }
 
 // Checks if user and owner are the same. Gets id to delete from user
-function deleteBike(req, res, next) {
+async function deleteBike(req, res, next) {
   const tokenUserId = req.user._id;
   const bikeOwnerId = req.body.owner;
   if (tokenUserId === bikeOwnerId) {
-    Bike.findByIdAndDelete(req.body._id)
-      .then((result) => {
-        console.log(result);
-        console.log(req.body._id);
-        if (result) {
-          res.status(202).json({ deletedId: req.params._id });
-        } else {
-          res.status(404).json({ message: 'Not found' });
-        }
-      })
-      .catch((err) => next(err));
+    await Bike.findByIdAndDelete(req.body._id);
+    res.status(202).json({ deletedId: req.params._id });
+  } else {
+    next(new Error());
   }
 }
 
@@ -130,3 +122,21 @@ module.exports = {
   getOwnedBikes,
   // getBikeById,
 };
+
+// function deleteBike(req, res, next) {
+//   const tokenUserId = req.user._id;
+//   const bikeOwnerId = req.body.owner;
+//   if (tokenUserId === bikeOwnerId) {
+//     Bike.findByIdAndDelete(req.body._id)
+//       .then((result) => {
+//         console.log(result);
+//         console.log(req.body._id);
+//         if (result) {
+//           res.status(202).json({ deletedId: req.params._id });
+//         } else {
+//           res.status(404).json({ message: 'Not found' });
+//         }
+//       })
+//       .catch((err) => next(err));
+//   }
+// }

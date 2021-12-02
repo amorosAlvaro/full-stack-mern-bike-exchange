@@ -1,3 +1,12 @@
+GET http://localhost:3030/bikes
+Content-Type: application/json
+
+{
+    "owner": "61a648424651f9f1ae1983e2"
+}
+
+###
+
 
 POST http://localhost:3030/users
 Content-Type: application/json

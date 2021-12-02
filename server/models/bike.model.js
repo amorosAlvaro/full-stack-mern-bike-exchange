@@ -9,7 +9,7 @@ module.exports = mongoose.model(
       type: String,
       required: true,
     },
-    model: {
+    bike_model: {
       type: String,
     },
     km: {
@@ -31,7 +31,7 @@ module.exports = mongoose.model(
         ref: 'User',
       },
     ],
-    img: String,
-    display: Boolean,
+    img: [{ type: String }],
+    display: { type: Boolean, default: true },
   })
 );
