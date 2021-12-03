@@ -3,6 +3,7 @@ const {
   postBike,
   deleteBike,
   addBikeToFavorites,
+  deleteBikeFromFavorites,
 } = require('./bike.controllers');
 const Bike = require('../models/bike.model');
 
@@ -114,12 +115,12 @@ describe('Given the Users controller', () => {
         test('call has been send', () => {
           expect(Bike.findById).toBeTruthy();
         });
-        test('favorites array should be ate least 1', async () => {
+        test('json should eb called', async () => {
           await addBikeToFavorites(req, res, next);
           expect(res.json).toHaveBeenCalled();
         });
       });
-      describe('if no user ID is provided', () => {
+      describe('next is called', () => {
         describe('promise is rejected', () => {
           beforeEach(() => {
             req.body = { bikeId: '222' };
@@ -134,6 +135,44 @@ describe('Given the Users controller', () => {
             expect(next).toHaveBeenCalled();
           });
         });
+      });
+      describe('When deleteBikeFromFavorites is triggered', () => {
+        describe('adn it works, promise is resolved', () => {
+          beforeEach(() => {
+            req.body = { bikeId: '222' };
+            req.user = { _id: '619516dd75bcdf9b77e6690c' };
+            Bike.findById.mockReturnValue({
+              make: 'Honda',
+              favorites: [],
+              save: jest.fn(),
+            });
+          });
+          test('call has been send', () => {
+            expect(Bike.findById).toBeTruthy();
+          });
+          test('json is called', async () => {
+            await deleteBikeFromFavorites(req, res, next);
+            expect(res.json).toHaveBeenCalled();
+          });
+        });
+        describe('If no user id is provided', () => {
+          beforeEach(() => {
+            req.body = { bikeId: '222' };
+            Bike.findById.mockReturnValue({
+              make: 'Honda',
+              favorites: [],
+              save: jest.fn(),
+            });
+            shrugged;
+          });
+          test('next is called', async () => {
+            await deleteBikeFromFavorites(req, res, next);
+            expect(next).toHaveBeenCalled();
+          });
+        });
+      });
+      describe('When getOwnedBikes is triggered', () => {
+        describe('and it works, promise is resolved', () => {});
       });
     });
   });

@@ -54,13 +54,13 @@ async function addBikeToFavorites(req, res, next) {
 
 async function deleteBikeFromFavorites(req, res, next) {
   const { bikeId } = req.body;
-  const userId = req.user._id;
+  const userId = req.user;
 
   if (bikeId && userId) {
     const bike = await Bike.findById(bikeId);
     const favoriteFiltered = bike.favorites
       .map((favorite) => favorite.toString())
-      .filter((item) => item !== userId);
+      .filter((item) => item !== userId._id);
     bike.favorites = favoriteFiltered;
     bike.save();
     res.json(bike);
