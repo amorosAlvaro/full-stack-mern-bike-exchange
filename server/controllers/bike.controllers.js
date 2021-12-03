@@ -36,25 +36,27 @@ async function deleteBike(req, res, next) {
   }
 }
 
-// Needs bikeID as input userID from body
+// SAVE NEXT NEED TO BE ASYNC? // DO WE NEED SAVE HERE?
+// Needs bikeID from body and userID from token
 async function addBikeToFavorites(req, res, next) {
-  const bikeId = req.body;
-  const userId = req.user;
-  try {
+  const { bikeId } = req.body;
+  const tokenUserId = req.user;
+
+  if (tokenUserId && bikeId) {
     const bike = await Bike.findById(bikeId);
-    bike.favorites = [...bike.favorites, userId];
+    bike.favorites = [...bike.favorites, tokenUserId];
     bike.save();
     res.json(bike);
-  } catch (error) {
-    next(error);
+  } else {
+    next(new Error());
   }
 }
 
 async function deleteBikeFromFavorites(req, res, next) {
-  const bikeId = req.body;
+  const { bikeId } = req.body;
   const userId = req.user._id;
-  console.log(userId);
-  try {
+
+  if (bikeId && userId) {
     const bike = await Bike.findById(bikeId);
     const favoriteFiltered = bike.favorites
       .map((favorite) => favorite.toString())
@@ -62,11 +64,10 @@ async function deleteBikeFromFavorites(req, res, next) {
     bike.favorites = favoriteFiltered;
     bike.save();
     res.json(bike);
-  } catch (error) {
-    next(error);
+  } else {
+    next(new Error());
   }
 }
-
 // Gets userID from token
 async function getOwnedBikes(req, res, next) {
   const userId = req.user._id;

@@ -1,4 +1,9 @@
-const { getAllBikes, postBike, deleteBike } = require('./bike.controllers');
+const {
+  getAllBikes,
+  postBike,
+  deleteBike,
+  addBikeToFavorites,
+} = require('./bike.controllers');
 const Bike = require('../models/bike.model');
 
 jest.mock('../models/bike.model');
@@ -92,6 +97,42 @@ describe('Given the Users controller', () => {
         test('then call status and json', async () => {
           await deleteBike(req, res, next);
           expect(next).toHaveBeenCalled();
+        });
+      });
+    });
+    describe('When addBikeToFavorites is triggered', () => {
+      describe('and it works, promise is resolved', () => {
+        beforeEach(() => {
+          req.body = { bikeId: '222' };
+          req.user = { _id: '619516dd75bcdf9b77e6690c' };
+          Bike.findById.mockReturnValue({
+            make: 'Honda',
+            favorites: [],
+            save: jest.fn(),
+          });
+        });
+        test('call has been send', () => {
+          expect(Bike.findById).toBeTruthy();
+        });
+        test('favorites array should be ate least 1', async () => {
+          await addBikeToFavorites(req, res, next);
+          expect(res.json).toHaveBeenCalled();
+        });
+      });
+      describe('if no user ID is provided', () => {
+        describe('promise is rejected', () => {
+          beforeEach(() => {
+            req.body = { bikeId: '222' };
+            Bike.findById.mockReturnValue({
+              make: 'Honda',
+              favorites: ['645352'],
+              save: jest.fn(),
+            });
+          });
+          test('next is called', async () => {
+            await addBikeToFavorites(req, res, next);
+            expect(next).toHaveBeenCalled();
+          });
         });
       });
     });
