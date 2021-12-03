@@ -4,6 +4,7 @@ const {
   deleteBike,
   addBikeToFavorites,
   deleteBikeFromFavorites,
+  getOwnedBikes,
 } = require('./bike.controllers');
 const Bike = require('../models/bike.model');
 
@@ -34,7 +35,7 @@ describe('Given the Users controller', () => {
     });
     describe('If it does not work, promise gets rejected', () => {
       beforeEach(() => {
-        Bike.find.mockRejectedValue(new Error());
+        Bike.find.mockRejectedValue();
       });
       test('Then call next', async () => {
         await getAllBikes(req, res, next);
@@ -163,7 +164,6 @@ describe('Given the Users controller', () => {
               favorites: [],
               save: jest.fn(),
             });
-            shrugged;
           });
           test('next is called', async () => {
             await deleteBikeFromFavorites(req, res, next);
@@ -171,8 +171,29 @@ describe('Given the Users controller', () => {
           });
         });
       });
-      describe('When getOwnedBikes is triggered', () => {
-        describe('and it works, promise is resolved', () => {});
+      describe('When get own bikes is triggered', () => {
+        describe('and it works, promise is resolved', () => {
+          beforeEach(() => {
+            req.user = { userId: '222' };
+            Bike.find.mockReturnValue([]);
+          });
+          test('call has been send', () => {
+            expect(Bike.find).toBeTruthy();
+          });
+          test('json is called', async () => {
+            await getOwnedBikes(req, res, next);
+            expect(res.json).toHaveBeenCalled();
+          });
+        });
+        describe('if no user id is provided', () => {
+          beforeEach(() => {
+            Bike.find.mockReturnValue([]);
+          });
+          test('next is called', async () => {
+            await getOwnedBikes(req, res, next);
+            expect(next).toHaveBeenCalled();
+          });
+        });
       });
     });
   });
