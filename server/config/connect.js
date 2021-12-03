@@ -7,10 +7,14 @@ const name = process.env.DB_NAME;
 
 const uri = `mongodb+srv://${user}:${password}@cluster0.3n50x.mongodb.net/${name}?retryWrites=true&w=majority`;
 
-async function mongoConnect() {
-  const mongooseConnect = await mongoose.connect(uri);
-
-  return mongooseConnect;
+async function mongoConnect(uriParam = uri) {
+  try {
+    const mongooseConnect = await mongoose.connect(uriParam);
+    return mongooseConnect;
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
 }
 
 module.exports = { mongoConnect };
