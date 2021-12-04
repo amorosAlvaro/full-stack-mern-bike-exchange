@@ -9,7 +9,7 @@ const {
 } = require('../controllers/image.controller');
 const { image } = require('../config/cloudinary');
 
-imageRouter.post('/', upload.single('image'), authentication, addImage);
+imageRouter.post('/', upload.single('image'), addImage);
 imageRouter.get('/', getAllImages);
 imageRouter.delete('/:id', deleteImage);
 

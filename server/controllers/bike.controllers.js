@@ -2,10 +2,14 @@ const Bike = require('../models/bike.model');
 
 // TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
 
+// This comes with query option. Needs populate to be added
 async function getAllBikes(req, res, next) {
   const query = req.body;
   try {
-    const bikes = await Bike.find(query);
+    const bikes = await Bike.find(query).populate({
+      path: 'owner',
+      select: ['userName', 'email', 'province'],
+    });
     res.json(bikes);
   } catch (error) {
     next(error);
@@ -91,11 +95,14 @@ async function getFavoriteBikes(req, res, next) {
   const userId = req.user;
 
   if (userId) {
-    const bikes = await Bike.find();
+    const bikes = await Bike.find().populate({
+      path: 'owner',
+      select: ['userName', 'email', 'province'],
+    });
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       item.favorites.map((favorite) => {
-        if (userId._id === favorite.toString()) {
+        if (userId._id) {
           bikesFiltered.push(bikes[index]);
         }
       });
