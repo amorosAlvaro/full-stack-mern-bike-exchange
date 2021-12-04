@@ -6,10 +6,7 @@ const Bike = require('../models/bike.model');
 async function getAllBikes(req, res, next) {
   const query = req.body;
   try {
-    const bikes = await Bike.find(query).populate({
-      path: 'owner',
-      select: ['userName', 'email', 'province'],
-    });
+    const bikes = await Bike.find(query).populate('owner');
     res.json(bikes);
   } catch (error) {
     next(error);

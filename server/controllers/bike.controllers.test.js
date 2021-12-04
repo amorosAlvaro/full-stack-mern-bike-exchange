@@ -26,19 +26,16 @@ describe('Given the Users controller', () => {
   });
   describe('When getAllBikes is triggered', () => {
     describe('and it works, promise is resolved', () => {
-      beforeEach(() => {
-        Bike.find.mockReturnValue([]);
-      });
       test('call has been send', async () => {
+        Bike.find = jest.fn().mockReturnThis();
+        Bike.populate = jest.fn().mockResolvedValue('bikes');
         await getAllBikes(req, res, next);
         expect(res.json).toHaveBeenCalled();
       });
     });
     describe('If it does not work, promise gets rejected', () => {
-      beforeEach(() => {
-        Bike.find.mockRejectedValue();
-      });
       test('Then call next', async () => {
+        Bike.populate.mockRejectedValueOnce('error');
         await getAllBikes(req, res, next);
         expect(next).toHaveBeenCalled();
       });
