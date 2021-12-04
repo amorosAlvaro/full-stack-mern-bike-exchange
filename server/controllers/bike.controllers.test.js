@@ -5,6 +5,7 @@ const {
   addBikeToFavorites,
   deleteBikeFromFavorites,
   getOwnedBikes,
+  getFavoriteBikes,
 } = require('./bike.controllers');
 const Bike = require('../models/bike.model');
 
@@ -177,7 +178,7 @@ describe('Given the Users controller', () => {
             req.user = { userId: '222' };
             Bike.find.mockReturnValue([]);
           });
-          test('call has been send', () => {
+          test('call has been send and has method find', () => {
             expect(Bike.find).toBeTruthy();
           });
           test('json is called', async () => {
@@ -193,6 +194,28 @@ describe('Given the Users controller', () => {
             await getOwnedBikes(req, res, next);
             expect(next).toHaveBeenCalled();
           });
+        });
+      });
+      describe('When get all bikes is triggered', () => {
+        describe('and promise is resolved', () => {
+          beforeEach(() => {
+            req.user = { userId: '222' };
+            Bike.find.mockReturnValue([]);
+          });
+          test('call has been send and has method find', () => {
+            expect(Bike.find).toBeTruthy();
+          });
+          test('json is called', async () => {
+            await getFavoriteBikes(req, res, next);
+            expect(res.json).toHaveBeenCalled();
+          });
+        });
+        beforeEach(() => {
+          Bike.find.mockReturnValue([]);
+        });
+        test('expect next to be called', async () => {
+          await getFavoriteBikes(req, res, next);
+          expect(next).toHaveBeenCalled();
         });
       });
     });

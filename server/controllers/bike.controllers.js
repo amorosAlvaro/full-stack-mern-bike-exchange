@@ -88,21 +88,21 @@ async function getOwnedBikes(req, res, next) {
 
 // Gets userID from token
 async function getFavoriteBikes(req, res, next) {
-  const userId = req.user._id;
-  try {
+  const userId = req.user;
+
+  if (userId) {
     const bikes = await Bike.find();
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       item.favorites.map((favorite) => {
-        if (userId === favorite.toString()) {
+        if (userId._id === favorite.toString()) {
           bikesFiltered.push(bikes[index]);
         }
       });
     });
-    console.log(bikesFiltered);
     res.json(bikesFiltered);
-  } catch (error) {
-    next(error);
+  } else {
+    next(new Error());
   }
 }
 
