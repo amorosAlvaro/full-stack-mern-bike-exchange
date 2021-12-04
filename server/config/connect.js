@@ -10,6 +10,7 @@ const uri = `mongodb+srv://${user}:${password}@cluster0.3n50x.mongodb.net/${name
 async function mongoConnect(uriParam = uri) {
   try {
     const mongooseConnect = await mongoose.connect(uriParam);
+    console.log('Connected to mongo');
     return mongooseConnect;
   } catch (error) {
     console.log(error);

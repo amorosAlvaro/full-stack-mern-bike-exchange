@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-
 const { Schema } = mongoose;
 
 module.exports = mongoose.model(
@@ -31,7 +30,12 @@ module.exports = mongoose.model(
         ref: 'User',
       },
     ],
-    img: [{ type: String }],
+    pictures: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Image',
+      },
+    ],
     display: { type: Boolean, default: true },
   })
 );
