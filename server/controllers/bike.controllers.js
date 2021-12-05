@@ -99,9 +99,7 @@ async function getFavoriteBikes(req, res, next) {
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       item.favorites.map((favorite) => {
-        if (userId._id) {
-          bikesFiltered.push(bikes[index]);
-        }
+        bikesFiltered.push(bikes[index]);
       });
     });
     res.json(bikesFiltered);
