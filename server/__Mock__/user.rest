@@ -1,0 +1,47 @@
+GET http://localhost:3030/bikes
+Content-Type: application/json
+
+{
+    "owner": "61a648424651f9f1ae1983e2"
+}
+
+###
+
+
+POST http://localhost:3030/users
+Content-Type: application/json
+
+{
+    "userName": "Alvaro",
+    "password":"Alvaro",
+    "email": "Alvaro.23@gamail.com",
+    "province": "Madrid"
+}
+
+
+###
+
+GET  http://localhost:3030/users/Kyle
+Content-Type: application/json
+
+
+###
+
+POST http://localhost:3030/login
+Content-Type: application/json
+
+{
+    "userName": "Alvaro",
+    "password":"Alvaro"
+}
+
+
+###
+
+POST http://localhost:3030/bikes
+Content-Type: application/json
+
+
+{
+    "make": "Honda"
+}
