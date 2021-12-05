@@ -6,7 +6,17 @@ const Bike = require('../models/bike.model');
 async function getAllBikes(req, res, next) {
   const query = req.body;
   try {
-    const bikes = await Bike.find(query).populate('owner');
+    const bikes = await Bike.find(query).populate([
+      {
+        path: 'owner',
+        select: ['userName', 'email', 'province'],
+      },
+      {
+        path: 'pictures',
+        select: ['avatar'],
+      },
+    ]);
+
     res.json(bikes);
   } catch (error) {
     next(error);
@@ -74,7 +84,10 @@ async function getOwnedBikes(req, res, next) {
   const userId = req.user;
 
   if (userId) {
-    const bikes = await Bike.find();
+    const bikes = await Bike.find().populate({
+      path: 'pictures',
+      select: ['avatar'],
+    });
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       if (item.owner.toString() === userId._id) {
@@ -92,10 +105,17 @@ async function getFavoriteBikes(req, res, next) {
   const userId = req.user;
 
   if (userId) {
-    const bikes = await Bike.find().populate({
-      path: 'owner',
-      select: ['userName', 'email', 'province'],
-    });
+    const bikes = await Bike.find().populate([
+      {
+        path: 'owner',
+        select: ['userName', 'email', 'province'],
+      },
+      {
+        path: 'pictures',
+        select: ['avatar'],
+      },
+    ]);
+
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       item.favorites.map((favorite) => {
@@ -108,14 +128,6 @@ async function getFavoriteBikes(req, res, next) {
   }
 }
 
-// Gets BikeID
-// function getBikeById(req, res, next) {
-//   Bike.findById(req.body.id)
-//     .populate('owner', { username, email, province })
-//     .then((result) => res.json(result))
-//     .catch((err) => next(err));
-// }
-
 module.exports = {
   getAllBikes,
   postBike,
@@ -124,23 +136,4 @@ module.exports = {
   deleteBike,
   getFavoriteBikes,
   getOwnedBikes,
-  // getBikeById,
 };
-
-// function deleteBike(req, res, next) {
-//   const tokenUserId = req.user._id;
-//   const bikeOwnerId = req.body.owner;
-//   if (tokenUserId === bikeOwnerId) {
-//     Bike.findByIdAndDelete(req.body._id)
-//       .then((result) => {
-//         console.log(result);
-//         console.log(req.body._id);
-//         if (result) {
-//           res.status(202).json({ deletedId: req.params._id });
-//         } else {
-//           res.status(404).json({ message: 'Not found' });
-//         }
-//       })
-//       .catch((err) => next(err));
-//   }
-// }

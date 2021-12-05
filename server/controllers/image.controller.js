@@ -11,6 +11,7 @@ async function addImage(req, res, next) {
       cloudinary_id: result.public_id,
     });
     await image.save();
+
     res.json(image);
   } catch (err) {
     next(err);

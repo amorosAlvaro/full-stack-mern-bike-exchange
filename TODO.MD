@@ -1,7 +1,7 @@
 # TODO TOMORROW:
 
-## Check tests for functions with populate (getAllBikes & getFavoriteBIkes)
+## Redo tests for populate wit images
 
-## Check how to add the Object ID image to when doing POST bike (watch how the indian guy does it)
+## Check how to delete images when deleting bikes
 
-## TESTS FOR IMAGE CONTROLLERS
+## Test for image controllers

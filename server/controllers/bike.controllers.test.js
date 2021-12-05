@@ -8,6 +8,7 @@ const {
   getFavoriteBikes,
 } = require('./bike.controllers');
 const Bike = require('../models/bike.model');
+const { populate } = require('../models/bike.model');
 
 jest.mock('../models/bike.model');
 
@@ -171,23 +172,24 @@ describe('Given the Users controller', () => {
       });
       describe('When getOwnBikes is triggered', () => {
         describe('and it works, promise is resolved', () => {
-          beforeEach(() => {
-            req.user = { userId: '222' };
-            Bike.find.mockReturnValue([]);
-          });
           test('call has been send and has method find', () => {
+            req.user = jest.fn({ userId: '222' });
+            Bike.find = jest.fn().mockReturnThis();
+            Bike.populate = jest.fn().mockResolvedValue('bikes');
             expect(Bike.find).toBeTruthy();
           });
           test('json is called', async () => {
+            req.user = jest.fn({ userId: '222' });
+            Bike.find = jest.fn().mockReturnThis([]);
+            Bike.populate = jest.fn().mockResolvedValue([]);
             await getOwnedBikes(req, res, next);
             expect(res.json).toHaveBeenCalled();
           });
         });
         describe('if no user id is provided', () => {
-          beforeEach(() => {
-            Bike.find.mockReturnValue([]);
-          });
           test('next is called', async () => {
+            Bike.find.mockReturnValue([]);
+
             await getOwnedBikes(req, res, next);
             expect(next).toHaveBeenCalled();
           });
@@ -209,7 +211,6 @@ describe('Given the Users controller', () => {
             expect(res.json).toHaveBeenCalled();
           });
         });
-
         test('expect next to be called', async () => {
           Bike.find.mockReturnValue([]);
           await getFavoriteBikes(req, res, next);
