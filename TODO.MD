@@ -1,6 +1,6 @@
 # TODO TOMORROW:
 
-## Redo tests for populate wit images
+#TODO ONE DAY:
 
 ## Check how to delete images when deleting bikes
 

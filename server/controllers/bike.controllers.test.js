@@ -189,7 +189,6 @@ describe('Given the Users controller', () => {
         describe('if no user id is provided', () => {
           test('next is called', async () => {
             Bike.find.mockReturnValue([]);
-
             await getOwnedBikes(req, res, next);
             expect(next).toHaveBeenCalled();
           });
