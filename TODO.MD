@@ -1,6 +1,14 @@
+# TODO TODAY:
+
 # TODO TOMORROW:
 
-#TODO ONE DAY:
+## Start redux
+
+## Start redux
+
+## Check eslint configuration for back and front
+
+# TODO ONE DAY:
 
 ## Check how to delete images when deleting bikes
 
