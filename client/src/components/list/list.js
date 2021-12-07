@@ -18,6 +18,7 @@ function List() {
         {bikes.map((bike) => (
           <div className="bikes__bike" key={bike._id}>
             {bike.make}
+            {console.log(bikes)}
           </div>
         ))}
       </div>

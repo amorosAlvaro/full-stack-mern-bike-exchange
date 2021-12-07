@@ -14,18 +14,21 @@ export function loadBikes() {
   };
 }
 
-export function logUser() {
+export function logUser(userData) {
   const api = 'http://localhost:3030';
 
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${api}/login`, {
-        userName: 'Alvaro',
-        password: 'Alvaro',
-      });
+      const { data } = await axios.post(`${api}/login`, userData);
       dispatch({ type: actionTypes.LOGIN_USER, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
     }
+  };
+}
+
+export function logOutUser() {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.LOGOUT_USER });
   };
 }
