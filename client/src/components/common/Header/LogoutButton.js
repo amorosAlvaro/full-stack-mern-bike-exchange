@@ -1,12 +1,16 @@
-// import { useAuth0 } from '@auth0/auth0-react';
-
 import logoutIcon from '../../../assets/icons/logout.svg';
+import { logOutUser } from '../../../redux/action.creators';
+import { useDispatch } from 'react-redux';
 
 const LogoutButton = () => {
-  //   const { logout } = useAuth0();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logOutUser());
+  };
 
   return (
-    <button className="header__user-btn">
+    <button className="header__user-btn" onClick={handleLogout}>
       <img src={logoutIcon} alt="login" className="header__user-img" />
     </button>
   );

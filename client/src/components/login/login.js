@@ -8,7 +8,6 @@ function Login() {
 
   const dispatch = useDispatch();
 
-  ////////////////////////////////////////////
   const [loginState, setLoginState] = useState({ userName: '', password: '' });
 
   const handleSubmit = (ev) => {
@@ -25,7 +24,6 @@ function Login() {
   };
 
   return (
-    // Ad a link that takes you to the previous page with the new logged in state
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <label htmlFor="user-name">Name</label>
@@ -54,6 +52,9 @@ function Login() {
       <button type="submit">Login</button>
       <button type="reset" onClick={handleLogout}>
         Logout
+      </button>
+      <button type="register" onClick={handleLogout}>
+        Register
       </button>
     </form>
   );

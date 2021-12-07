@@ -18,10 +18,3 @@ export default function configureStore(preloadState) {
     composeEnhancers(applyMiddleware(thunk)),
   );
 }
-
-// const store = createStore(
-//   bikesReducer,
-//   composeEnhancers(applyMiddleware(thunk)),
-// );
-
-// export default store;
