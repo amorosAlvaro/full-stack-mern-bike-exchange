@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
+import { Link } from 'react-router-dom';
 import star from '../../../assets/icons/start-white.svg';
 import home from '../../../assets/icons/white-house.svg';
 import user from '../../../assets/icons/user-icon.svg';
-import { Link } from 'react-router-dom';
 import './Sidebar.scss';
 
-const Sidebar = () => {
+const Sidebar = function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(false);
   const handleStateChange = (state) => setIsOpen(state.isOpen);
   return (
     <Menu
-      OuterContainerId={'main'}
+      OuterContainerId="main"
       width={250}
       isOpen={isOpen}
       onStateChange={(state) => handleStateChange(state)}

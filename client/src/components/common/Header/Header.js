@@ -1,11 +1,10 @@
+import { useSelector } from 'react-redux';
 import LoginButton from './LoginButton';
 import LogoutButton from './LogoutButton';
 
-import { useSelector } from 'react-redux';
-
 import './Header.scss';
 
-const Header = () => {
+const Header = function Header() {
   const token = useSelector((store) => store.login);
 
   return (

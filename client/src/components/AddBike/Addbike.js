@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
-import { addBike } from '../../../services/bike.services';
+import { addBike } from '../../services/bike.services';
 
-function AddBike() {
+const AddBike = function AddBike() {
   const token = useSelector((store) => store.login);
 
   const headers = {
     headers: {
-      'auth-token': token,
-    },
+      'auth-token': token
+    }
   };
 
   const [bikeState, setBikeState] = useState({
@@ -20,19 +20,18 @@ function AddBike() {
     km: '',
     year: '',
     change: '',
-    image: '',
+    image: ''
   });
 
   const handleChange = (name) => (ev) => {
     const value = name === 'image' ? ev.target.files[0] : ev.target.value;
-    console.log(ev);
     setBikeState({ ...bikeState, [name]: value });
   };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
 
-    let formData = new FormData();
+    const formData = new FormData();
     formData.append('image', bikeState.image);
     formData.append('make', bikeState.make);
     formData.append('bike_model', bikeState.bike_model);
@@ -47,7 +46,7 @@ function AddBike() {
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
+          '& .MuiTextField-root': { m: 1, width: '25ch' }
         }}
         noValidate
         autoComplete="off"
@@ -102,6 +101,6 @@ function AddBike() {
       </Box>
     </div>
   );
-}
+};
 
 export default AddBike;

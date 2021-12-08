@@ -5,16 +5,16 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { registerUser } from '../../services/user.services';
 
-export default function SignUp() {
+const SingUp = function SignUp() {
   const [registerState, setRegisterState] = useState({
     userName: '',
     password: '',
     email: '',
     province: '',
-    phone: '',
+    phone: ''
   });
 
-  const [buttonState, setButtonState] = useState('disabled');
+  // const [buttonState, setButtonState] = useState('disabled');
 
   const handleSubmit = (ev) => {
     // Why do we need prevents default if here?
@@ -39,7 +39,7 @@ export default function SignUp() {
     <Box
       component="form"
       sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
+        '& .MuiTextField-root': { m: 1, width: '25ch' }
       }}
       noValidate
       autoComplete="off"
@@ -81,4 +81,6 @@ export default function SignUp() {
       </Button>
     </Box>
   );
-}
+};
+
+export default SingUp;

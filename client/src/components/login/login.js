@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { logUser, logOutUser } from '../../redux/action.creators';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { logUser } from '../../redux/action.creators';
 
-function Login() {
+const Login = function Login() {
   // I AM NOT SURE IF I NEED THIS HERE, I DONT THINK SO
   // const token = useSelector((store) => store.login);
 
@@ -28,11 +28,11 @@ function Login() {
       <Box
         component="form"
         sx={{
-          '& .MuiTextField-root': { m: 1, width: '25ch' },
+          '& .MuiTextField-root': { m: 1, width: '25ch' }
         }}
         noValidate
         autoComplete="off"
-      ></Box>
+      />
       <div>
         <TextField
           required
@@ -56,7 +56,7 @@ function Login() {
           <Button variant="outlined">SignUp</Button>
         </Link>
       </div>
-      {/* 
+      {/*
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="user-name">Name</label>
@@ -94,6 +94,6 @@ function Login() {
       </form> */}
     </>
   );
-}
+};
 
 export default Login;

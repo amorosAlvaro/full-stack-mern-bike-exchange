@@ -1,8 +1,8 @@
+import { useDispatch } from 'react-redux';
 import logoutIcon from '../../../assets/icons/logout.svg';
 import { logOutUser } from '../../../redux/action.creators';
-import { useDispatch } from 'react-redux';
 
-const LogoutButton = () => {
+const LogoutButton = function LogoutButton() {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -10,7 +10,7 @@ const LogoutButton = () => {
   };
 
   return (
-    <button className="header__user-btn" onClick={handleLogout}>
+    <button type="button" className="header__user-btn" onClick={handleLogout}>
       <img src={logoutIcon} alt="login" className="header__user-img" />
     </button>
   );

@@ -1,6 +1,6 @@
 import actionTypes from '../action.types';
 
-let initialToken = null;
+const initialToken = null;
 
 function loginReducer(data = initialToken, action) {
   let nextToken = data;
