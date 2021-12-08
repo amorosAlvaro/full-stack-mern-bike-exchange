@@ -12,10 +12,6 @@ async function getAllBikes(req, res, next) {
         path: 'owner',
         select: ['userName', 'email', 'province'],
       },
-      {
-        path: 'pictures',
-        select: ['avatar'],
-      },
     ]);
 
     res.json(bikes);
@@ -98,10 +94,7 @@ async function getOwnedBikes(req, res, next) {
   const userId = req.user;
 
   if (userId) {
-    const bikes = await Bike.find().populate({
-      path: 'pictures',
-      select: ['avatar'],
-    });
+    const bikes = await Bike.find();
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       if (item.owner.toString() === userId._id) {
@@ -123,10 +116,6 @@ async function getFavoriteBikes(req, res, next) {
       {
         path: 'owner',
         select: ['userName', 'email', 'province'],
-      },
-      {
-        path: 'pictures',
-        select: ['avatar'],
       },
     ]);
 
