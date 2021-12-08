@@ -21,9 +21,9 @@ const Sidebar = () => {
         <img src={home} alt="home icon" className="slide__icon" />
         Home
       </Link>
-      <Link to="/favorites" onClick={handleClick}>
+      <Link to="/owned/addbike" onClick={handleClick}>
         <img src={star} alt="favorites icon" className="slide__icon" />
-        Favorites
+        Add Bike
       </Link>
       <Link to="/profile" onClick={handleClick}>
         <img src={user} alt="user icon" className="slide__icon" />

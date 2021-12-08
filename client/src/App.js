@@ -5,7 +5,8 @@ import Header from './components/common/Header/Header.js';
 import Home from './components/Home/Home';
 import './App.scss';
 import Sidebar from './components/common/Burger/Sidebar';
-import Register from './components/Register/Register';
+import SignUp from './components/SignUp/SignUp';
+import AddBike from './components/common/AddBike/Addbike';
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/register" element={<SignUp />} />
+              <Route path="/owned/addbike" element={<AddBike />} />
             </Routes>
           </main>
         </BrowserRouter>

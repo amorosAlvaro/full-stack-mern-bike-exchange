@@ -20,6 +20,7 @@ export function logUser(userData) {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${api}/login`, userData);
+      console.log(data);
       dispatch({ type: actionTypes.LOGIN_USER, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
