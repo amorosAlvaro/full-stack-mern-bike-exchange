@@ -1,4 +1,5 @@
 const Bike = require('../models/bike.model');
+const cloudinary = require('../config/cloudinary');
 
 // TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
 
@@ -25,11 +26,24 @@ async function getAllBikes(req, res, next) {
 
 // Gets bike info from user & ownerID from token (PROTECTED)
 async function postBike(req, res, next) {
+  console.log(req.body);
   try {
+    const result = await cloudinary.uploader.upload(req.file.path);
+
     const bike = req.body;
     bike.owner = req.user._id;
-    const newBike = Bike.create(bike);
-    res.status(201).json({ newBike });
+
+    const newBike = Bike.create({
+      make: req.body.make,
+      bike_model: req.body.make,
+      km: req.body.km,
+      year: req.body.year,
+      change: req.body.change,
+      owner: bike.owner,
+      avatar: result.secure_url,
+      // cloudinary_id: result.public_id,
+    });
+    res.status(201).json(newBike);
   } catch (error) {
     next(error);
   }

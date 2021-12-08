@@ -30,12 +30,14 @@ module.exports = mongoose.model(
         ref: 'User',
       },
     ],
-    pictures: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Image',
-      },
-    ],
+    avatar: {
+      type: String,
+    },
+
+    cloudinary_id: {
+      type: String,
+    },
+
     display: { type: Boolean, default: true },
   })
 );

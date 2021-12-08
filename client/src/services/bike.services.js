@@ -5,7 +5,7 @@ async function addBike(bike, header) {
   try {
     await axios.post(`${url}/bikes/owned`, bike, header);
   } catch (error) {
-    console.log(error);
+    console.log('error in axios');
   }
 }
 

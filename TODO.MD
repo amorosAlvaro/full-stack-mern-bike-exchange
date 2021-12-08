@@ -1,10 +1,12 @@
 # TODO TODAY:
 
-## Refactoring code, do proper imports exports & login
+## Add Image to postBike component
+
+## Check eslint configuration for back and front
 
 ## Hide register button whn fields are not okey
 
-## Add postBike component
+## Refactoring code, do proper imports exports & login
 
 # TODO TOMORROW:
 
@@ -13,8 +15,6 @@
 ## Check which tests can be recycled
 
 ## Add username to State
-
-## Check eslint configuration for back and front
 
 # TODO ONE DAY:
 
