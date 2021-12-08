@@ -4,7 +4,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
 import { addBike } from '../../../services/bike.services';
-import axios from 'axios';
 
 function AddBike() {
   const token = useSelector((store) => store.login);
@@ -24,46 +23,23 @@ function AddBike() {
     image: '',
   });
 
-  // const handleChange = (name) => (e) => {
-  //   const value = name === 'image' ? e.target.files[0] : e.target.value;
-  //   setBikeState({ ...bikeState, [name]: value });
-  // };
-
-  // const value = name === 'image' ? e.target.files[0] : e.target.value;
-
   const handleChange = (name) => (ev) => {
     const value = name === 'image' ? ev.target.files[0] : ev.target.value;
     console.log(ev);
     setBikeState({ ...bikeState, [name]: value });
   };
 
-  const handleSubmit = async (ev) => {
+  const handleSubmit = (ev) => {
     ev.preventDefault();
-    try {
-      let formData = new FormData();
-      formData.append('image', bikeState.image);
-      formData.append('make', bikeState.make);
 
-      const res = await fetch(`http://localhost:3030/bikes/owned`, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'auth-token': token,
-        },
-      });
-      if (res.ok) {
-        setBikeState({
-          make: '',
-          bike_model: '',
-          km: '',
-          year: '',
-          change: '',
-          image: '',
-        });
-      }
-    } catch (error) {
-      console.log('error in fetch');
-    }
+    let formData = new FormData();
+    formData.append('image', bikeState.image);
+    formData.append('make', bikeState.make);
+    formData.append('bike_model', bikeState.bike_model);
+    formData.append('km', bikeState.km);
+    formData.append('year', bikeState.year);
+
+    addBike(formData, headers);
   };
 
   return (
