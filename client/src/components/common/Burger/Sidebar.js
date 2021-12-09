@@ -25,9 +25,9 @@ const Sidebar = function Sidebar() {
         <img src={star} alt="favorites icon" className="slide__icon" />
         Add Bike
       </Link>
-      <Link to="/profile" onClick={handleClick}>
+      <Link to="/bikes" onClick={handleClick}>
         <img src={user} alt="user icon" className="slide__icon" />
-        Profile
+        All bikes
       </Link>
     </Menu>
   );

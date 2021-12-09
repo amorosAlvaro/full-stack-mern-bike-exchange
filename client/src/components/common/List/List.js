@@ -20,7 +20,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Skeleton from '@mui/material/Skeleton';
 import { loadBikes } from '../../redux/action.creators';
 
-const MotoList = function MotoList(props) {
+const MotoList = function MotoList({ list, type }) {
   const { loading = false } = props;
 
   const dispatch = useDispatch();

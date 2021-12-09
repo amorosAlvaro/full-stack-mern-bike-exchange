@@ -1,6 +1,6 @@
 # TODO TODAY:
 
-## List Component 
+# Adapt list to owned
 
 ## Details Component
 
