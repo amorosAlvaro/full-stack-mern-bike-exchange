@@ -1,27 +1,33 @@
 # TODO TODAY:
 
-## Add Image to postBike component
+## List Component 
 
-## Check eslint configuration for back and front
+## Details Component
 
-## Hide register button whn fields are not okey
+## Home Component
 
-## Refactoring code, do proper imports exports & login
+
 
 # TODO TOMORROW:
+
+## Check eslint configuration for back 
+
+## In register/addbike check for completed fields, atching passwords etc...
+
+## Bug if i fail to log in two times in a row
+
+## Do porpper login incons/routes
+
 
 ## Change colors
 
 ## Check which tests can be recycled
 
-## Add username to State
-
 # TODO ONE DAY:
 
-## Check safety features for backend: check repeated names emails etc...
+## NEED TO ADAPT BACKEND TESTS
 
 ## Check how to delete images when deleting bikes
 
-## Test for image controllers
-
+## Delete image controllers
 # Doubts

@@ -22,7 +22,6 @@ async function getAllBikes(req, res, next) {
 
 // Gets bike info from user & ownerID from token (PROTECTED)
 async function postBike(req, res, next) {
-  console.log(req.body);
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
 
@@ -31,7 +30,7 @@ async function postBike(req, res, next) {
 
     const newBike = Bike.create({
       make: req.body.make,
-      bike_model: req.body.make,
+      bike_model: req.body.bike_model,
       km: req.body.km,
       year: req.body.year,
       change: req.body.change,

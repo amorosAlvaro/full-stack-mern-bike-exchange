@@ -6,10 +6,11 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { logUser } from '../../redux/action.creators';
 
-const Login = function Login() {
-  // I AM NOT SURE IF I NEED THIS HERE, I DONT THINK SO
-  // const token = useSelector((store) => store.login);
+import './Login.scss';
 
+// ADD: If correct password, redirect to home, if not, display message
+
+const Login = function Login() {
   const dispatch = useDispatch();
 
   const [loginState, setLoginState] = useState({ userName: '', password: '' });
@@ -23,8 +24,14 @@ const Login = function Login() {
     setLoginState({ ...loginState, [control]: evt.target.value });
   };
 
+  // if (loginState.userName && loginState.password) {
+  //   console.log();
+  // }
+
+  // const buttonState = 'disabled';
+  // console.log(buttonState);
   return (
-    <>
+    <div className="login-gird">
       <Box
         component="form"
         sx={{
@@ -33,66 +40,41 @@ const Login = function Login() {
         noValidate
         autoComplete="off"
       />
-      <div>
+      <div className="login-gird--text">
         <TextField
           required
-          id="outlined-required"
+          className="login-gird--text__field"
           label="Name"
           onChange={(ev) => handleChange(ev, 'userName')}
         />
         <TextField
           required
-          id="outlined-required"
+          className="login-gird--text__field"
           label="Password"
           type="password"
           onChange={(ev) => handleChange(ev, 'password')}
         />
       </div>
-      <div>
-        <Button variant="outlined" onClick={handleSubmit}>
+      <div className="login-gird  --button">
+        <Button
+          variant="outlined"
+          onClick={handleSubmit}
+          className="login-grid--button__field"
+        >
           Login
         </Button>
         <Link to="/register">
-          <Button variant="outlined">SignUp</Button>
+          <Button
+            variant="outlined"
+            className="login-grid--button__field"
+          >
+            SignUp
+
+          </Button>
         </Link>
       </div>
-      {/*
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="user-name">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            name="user-name"
-            id="user-name"
-            value={loginState.userName}
-            required
-            onChange={(ev) => handleChange(ev, 'userName')}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="user-password">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            name="user-password"
-            id="user-password"
-            value={loginState.password}
-            required
-            onChange={(ev) => handleChange(ev, 'password')}
-          />
-        </div>
-        <button type="submit">Login</button>
-        <button type="reset" onClick={handleLogout}>
-          Logout
-        </button>
-        <Link to="/register">
-          <button type="register" onClick={handleLogout}>
-            SignUp
-          </button>
-        </Link>
-      </form> */}
-    </>
+
+    </div>
   );
 };
 

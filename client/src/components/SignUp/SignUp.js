@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { registerUser } from '../../services/user.services';
+import './SignUp.scss';
 
 const SingUp = function SignUp() {
   const [registerState, setRegisterState] = useState({
@@ -26,15 +27,6 @@ const SingUp = function SignUp() {
     setRegisterState({ ...registerState, [control]: evt.target.value });
   };
 
-  //   let sendPermission =
-  //     registerState.userName &&
-  //     registerState.password &&
-  //     registerState.email &&
-  //     registerState.province
-  //       ? 'disabled'
-  //       : 'disabled';
-
-  //   const sendPermission = 'disabled';
   return (
     <Box
       component="form"
@@ -44,7 +36,7 @@ const SingUp = function SignUp() {
       noValidate
       autoComplete="off"
     >
-      <div>
+      <div className="signup-grid">
         <TextField
           required
           id="outlined-required"
@@ -75,10 +67,11 @@ const SingUp = function SignUp() {
           type="password"
           onChange={(ev) => handleChange(ev, 'password')}
         />
+        <Button variant="outlined" onClick={handleSubmit}>
+          Send
+        </Button>
       </div>
-      <Button variant="outlined" onClick={handleSubmit}>
-        Send
-      </Button>
+
     </Box>
   );
 };

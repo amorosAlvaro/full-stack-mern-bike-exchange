@@ -4,6 +4,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
 import { addBike } from '../../services/bike.services';
+import './AddBike.scss';
 
 const AddBike = function AddBike() {
   const token = useSelector((store) => store.login);
@@ -51,7 +52,7 @@ const AddBike = function AddBike() {
         noValidate
         autoComplete="off"
       >
-        <div>
+        <div className="addbike-grid">
           <TextField
             required
             id="outlined-required"
@@ -85,19 +86,21 @@ const AddBike = function AddBike() {
             value={bikeState.change}
             onChange={handleChange('change')}
           />
+          {' '}
+          <div className="mb-3">
+            <input
+              className="form-control"
+              type="file"
+              accept="image/*"
+              name="image"
+              onChange={handleChange('image')}
+            />
+          </div>
+          <Button variant="outlined" onClick={handleSubmit}>
+            Save
+          </Button>
         </div>
-        <div className="mb-3">
-          <input
-            className="form-control"
-            type="file"
-            accept="image/*"
-            name="image"
-            onChange={handleChange('image')}
-          />
-        </div>
-        <Button variant="outlined" onClick={handleSubmit}>
-          Save
-        </Button>
+
       </Box>
     </div>
   );
