@@ -46,13 +46,12 @@ async function postBike(req, res, next) {
 
 // Checks if user and owner are the same. Gets id to delete from user
 async function deleteBike(req, res, next) {
-  const tokenUserId = req.user._id;
-  const bikeOwnerId = req.body.owner;
-  if (tokenUserId === bikeOwnerId) {
-    await Bike.findByIdAndDelete(req.body._id);
-    res.status(202).json({ deletedId: req.params._id });
-  } else {
-    next(new Error());
+  try {
+    const bike = await Bike.findByIdAndDelete(req.body._id);
+    console.log(bike);
+    res.status(201).json({});
+  } catch (error) {
+    next(error);
   }
 }
 

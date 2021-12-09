@@ -1,46 +1,45 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-undef */
 /* eslint-disable react/prop-types */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-use-before-define */
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import React from 'react';
 import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
-import ImageListItemBar from '@mui/material/ImageListItemBar';
-import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Skeleton from '@mui/material/Skeleton';
-import { loadBikes } from '../../redux/action.creators';
+import { useSelector, useDispatch } from 'react-redux';
+import DeleteButton from '../DeleteButton/DeleteButton';
+import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
-const MotoList = function MotoList({ list, type }) {
-  const { loading = false } = props;
+const List = function List({ list, type }) {
+  const { loading = false } = list;
 
-  const dispatch = useDispatch();
-
-  const bikes = useSelector((store) => store.bikes);
-
-  useEffect(() => {
-    dispatch(loadBikes());
-  }, [dispatch]);
-  console.log(bikes);
+  const token = useSelector((store) => store.login);
+  let headers;
+  if (token) {
+    headers = {
+      headers: {
+        'auth-token': token
+      }
+    };
+  }
 
   return (
     <ImageList cols={1}>
-      {bikes.map((item) => (
+      {list.map((item) => (
         <Card>
           <CardHeader
             action={
             loading ? null : (
               <IconButton aria-label="settings">
-                <MoreVertIcon />
+                { (type === 'owned') ? <DeleteButton _id={item._id} headers={headers} /> : <FavoriteButton _id={item._id} headers={headers} /> }
               </IconButton>
             )
           }
@@ -97,4 +96,4 @@ const MotoList = function MotoList({ list, type }) {
   );
 };
 
-export default MotoList;
+export default List;

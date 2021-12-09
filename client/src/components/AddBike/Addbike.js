@@ -39,6 +39,7 @@ const AddBike = function AddBike() {
     formData.append('km', bikeState.km);
     formData.append('year', bikeState.year);
     formData.append('change', bikeState.change);
+    console.log(headers);
 
     addBike(formData, headers);
   };

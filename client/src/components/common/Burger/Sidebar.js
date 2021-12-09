@@ -29,6 +29,10 @@ const Sidebar = function Sidebar() {
         <img src={user} alt="user icon" className="slide__icon" />
         All bikes
       </Link>
+      <Link to="/bikes/owned" onClick={handleClick}>
+        <img src={user} alt="user icon" className="slide__icon" />
+        Youre Bikes
+      </Link>
     </Menu>
   );
 };

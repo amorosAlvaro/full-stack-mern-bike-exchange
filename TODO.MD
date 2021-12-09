@@ -1,8 +1,9 @@
 # TODO TODAY:
 
-# Adapt list to owned
 
 ## Details Component
+
+## Add delete function for owned bikes
 
 ## Home Component
 

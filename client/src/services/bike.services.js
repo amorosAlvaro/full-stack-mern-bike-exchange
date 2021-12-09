@@ -9,4 +9,14 @@ async function addBike(bike, header) {
   }
 }
 
-export { addBike };
+async function deleteBike(_id, header) {
+  const url = 'http://localhost:3030';
+  console.log('servicio', _id, header);
+  try {
+    await axios.delete(`${url}/bikes/owned`, header, _id);
+  } catch (error) {
+    console.log('error in service');
+  }
+}
+
+export { addBike, deleteBike };
