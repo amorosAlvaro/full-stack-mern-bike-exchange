@@ -6,8 +6,8 @@ import List from '../common/List/List';
 const OwnedBikesList = function OwnedBikesList() {
   const dispatch = useDispatch();
   const bikes = useSelector((store) => store.bikes);
-
   const token = useSelector((store) => store.login);
+
   const headers = {
     headers: {
       'auth-token': token

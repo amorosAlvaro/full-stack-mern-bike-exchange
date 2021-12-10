@@ -21,6 +21,9 @@
     "global-require": 0,
     "eslint linebreak-style": [0, "error", "windows"],
     "import/prefer-default-export": "off",
-    "default-param-last": "off"
+    "default-param-last": "off",
+    "react/prop-types": "off",
+    "no-underscore-dangle": "off"
+    
   }
 }

@@ -10,7 +10,7 @@ import Stack from '@mui/material/Stack';
 import { useSelector } from 'react-redux';
 import { deleteBike } from '../../../services/bike.services';
 
-const DeleteButton = function DeleteButton({ _id, headers }) {
+const DeleteButton = function DeleteButton({ _id, token }) {
   //   const dispatch = useDispatch();
   // const token = useSelector((store) => store.login);
   // const headers = {
@@ -21,8 +21,16 @@ const DeleteButton = function DeleteButton({ _id, headers }) {
 
   const handleDelete = (ev) => {
     ev.preventDefault();
-    console.log(_id, headers);
-    deleteBike(_id, headers);
+    const config = {
+      headers: {
+        'auth-token': token
+      },
+      data: {
+        _id
+      }
+    };
+    console.log(config);
+    deleteBike(config);
   };
 
   //   const print = () => {
