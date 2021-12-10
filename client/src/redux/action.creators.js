@@ -73,7 +73,6 @@ export function addBikeToFavorite(bikeId, headers) {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${url}/bikes/favorite`, bikeId, headers);
-      console.log('DISPATCH FROM ACTION CREATEORS:', data);
       dispatch({ type: actionTypes.ADD_TO_FAVORITES, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });

@@ -34,7 +34,6 @@ const FavoriteButton = function FavoriteButton({ _id, token }) {
     const bikeId = {
       _id
     };
-    console.log('ADD_FROM_FAVORITE_BUTTON', bikeId, headers);
 
     dispatch(addBikeToFavorite(bikeId, headers));
   };
@@ -50,7 +49,7 @@ const FavoriteButton = function FavoriteButton({ _id, token }) {
         _id
       }
     };
-    console.log('ADD_FROM_FAVORITE_BUTTON', config);
+    console.log('DELETE_FROM_FAVORITE_BUTTON', config);
     dispatch(deleteBikeFromFavorite(config));
   };
 
