@@ -1,17 +1,32 @@
+/* eslint-disable no-use-before-define */
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-props-no-spreading */
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import Checkbox from '@mui/material/Checkbox';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadFavoriteBikes, addBikeToFavorite } from '../../../redux/action.creators';
+
 // import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
-import { addBikeToFavorite, deleteBikeFromFavorite } from '../../../services/bike.services';
+import { deleteBikeFromFavorite } from '../../../services/bike.services';
+import actionTypes from '../../../redux/action.types';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const FavoriteButton = function FavoriteButton({ _id, token }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({ type: actionTypes.ADD_TO_FAVORITES });
+  }, []);
+
+  const favoriteBikes = useSelector((store) => store.favorites);
+
   const handleAddFavorite = (ev) => {
     ev.preventDefault();
 
@@ -22,11 +37,11 @@ const FavoriteButton = function FavoriteButton({ _id, token }) {
       }
     };
 
-    const data = {
+    const bikeId = {
       _id
     };
 
-    addBikeToFavorite(data, headers);
+    addBikeToFavorite(bikeId, headers);
   };
   const handleDeleteFavorite = (ev) => {
     ev.preventDefault();

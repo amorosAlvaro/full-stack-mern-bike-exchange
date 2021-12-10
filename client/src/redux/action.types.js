@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   LOAD_BIKES: 'LOAD_BIKES',
+  LOAD_FAVORITES: 'LOAD_FAVORITES',
   POST_BIKE: 'POST_BIKE',
   DELETE_BIKE: 'DELETE_BIKE',
   ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',

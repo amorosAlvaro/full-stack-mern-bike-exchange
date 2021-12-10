@@ -27,13 +27,27 @@ export function loadOwnedBikes(header) {
   };
 }
 
+// export function loadFavoriteBikes(header) {
+//   const api = 'http://localhost:3030';
+
+//   return async (dispatch) => {
+//     try {
+//       const { data: bikes } = await axios.get(`${api}/bikes/favorite`, header);
+//       dispatch({ type: actionTypes.LOAD_BIKES, bikes });
+//     } catch (error) {
+//       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
+//     }
+//   };
+// }
+
 export function loadFavoriteBikes(header) {
   const api = 'http://localhost:3030';
 
   return async (dispatch) => {
     try {
-      const { data: bikes } = await axios.get(`${api}/bikes/favorite`, header);
-      dispatch({ type: actionTypes.LOAD_BIKES, bikes });
+      const { data: favorites } = await axios.get(`${api}/bikes/favorite`, header);
+      console.log('Data in action creator', favorites);
+      dispatch({ type: actionTypes.LOAD_FAVORITES, favorites });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
     }
@@ -56,5 +70,18 @@ export function logUser(userData) {
 export function logOutUser() {
   return (dispatch) => {
     dispatch({ type: actionTypes.LOGOUT_USER });
+  };
+}
+
+export function addBikeToFavorite(bikeId, headers) {
+  const url = 'http://localhost:3030';
+
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.post(`${url}/bikes/favorite`, bikeId, headers);
+      dispatch({ type: actionTypes.ADD_TO_FAVORITES, data });
+    } catch (error) {
+      dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
+    }
   };
 }
