@@ -39,7 +39,7 @@ const List = function List({ list, type }) {
             action={
             loading ? null : (
               <IconButton aria-label="settings">
-                { (type === 'owned') ? <DeleteButton _id={item._id} token={token} /> : <FavoriteButton _id={item._id} headers={headers} /> }
+                { (type === 'owned') ? <DeleteButton _id={item._id} token={token} /> : <FavoriteButton _id={item._id} token={token} /> }
               </IconButton>
             )
           }

@@ -9,6 +9,7 @@ import SignUp from './components/SignUp/SignUp';
 import AddBike from './components/AddBike/AddBike';
 import AllBikesList from './components/AllBikesList/AllBikesList';
 import OwnedBikesList from './components/OwnedBIkesList/OwnedBikesList';
+import FavoriteBikesList from './components/FavoriteBikesList/FavoriteBIkesList';
 
 const App = function App() {
   return (
@@ -25,6 +26,7 @@ const App = function App() {
             <Route path="/owned/addbike" element={<AddBike />} />
             <Route path="/bikes" element={<AllBikesList />} />
             <Route path="/bikes/owned" element={<OwnedBikesList />} />
+            <Route path="/bikes/favorite" element={<FavoriteBikesList />} />
 
           </Routes>
         </main>

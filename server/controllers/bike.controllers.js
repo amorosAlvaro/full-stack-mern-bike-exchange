@@ -47,7 +47,7 @@ async function postBike(req, res, next) {
 // Checks if user and owner are the same. Gets id to delete from user
 async function deleteBike(req, res, next) {
   try {
-    console.log('Constroler Input:', req);
+    console.log('Constroler Input:', req.body);
     await Bike.findByIdAndDelete(req.body._id);
     res.status(201).json();
   } catch (error) {
@@ -69,7 +69,7 @@ async function deleteBike(req, res, next) {
 // SAVE NEXT NEED TO BE ASYNC? // DO WE NEED SAVE HERE?
 // Needs bikeID from body and userID from token
 async function addBikeToFavorites(req, res, next) {
-  const { bikeId } = req.body;
+  const bikeId = req.body;
   const tokenUserId = req.user;
 
   if (tokenUserId && bikeId) {
@@ -83,8 +83,9 @@ async function addBikeToFavorites(req, res, next) {
 }
 
 async function deleteBikeFromFavorites(req, res, next) {
-  const { bikeId } = req.body;
+  const bikeId = req.body;
   const userId = req.user;
+  console.log('controler bikeID:', bikeId, 'controler userId:', userId);
 
   if (bikeId && userId) {
     const bike = await Bike.findById(bikeId);
@@ -95,6 +96,7 @@ async function deleteBikeFromFavorites(req, res, next) {
     bike.save();
     res.json(bike);
   } else {
+    console.log('error in controler');
     next(new Error());
   }
 }

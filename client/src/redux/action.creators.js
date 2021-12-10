@@ -27,6 +27,19 @@ export function loadOwnedBikes(header) {
   };
 }
 
+export function loadFavoriteBikes(header) {
+  const api = 'http://localhost:3030';
+
+  return async (dispatch) => {
+    try {
+      const { data: bikes } = await axios.get(`${api}/bikes/favorite`, header);
+      dispatch({ type: actionTypes.LOAD_BIKES, bikes });
+    } catch (error) {
+      dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
+    }
+  };
+}
+
 export function logUser(userData) {
   const api = 'http://localhost:3030';
 

@@ -33,6 +33,10 @@ const Sidebar = function Sidebar() {
         <img src={user} alt="user icon" className="slide__icon" />
         Youre Bikes
       </Link>
+      <Link to="/bikes/favorite" onClick={handleClick}>
+        <img src={user} alt="user icon" className="slide__icon" />
+        Favorite Bikes
+      </Link>
     </Menu>
   );
 };

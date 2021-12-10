@@ -15,8 +15,8 @@ bikeRouter.get('/', getAllBikes);
 bikeRouter.post('/owned', authentication, upload.single('image'), postBike);
 bikeRouter.delete('/owned', authentication, deleteBike);
 bikeRouter.get('/owned', authentication, getOwnedBikes);
-bikeRouter.put('/favorites', authentication, addBikeToFavorites);
-bikeRouter.delete('/favorites', authentication, deleteBikeFromFavorites);
-bikeRouter.get('/favorites', authentication, getFavoriteBikes);
+bikeRouter.post('/favorite', authentication, addBikeToFavorites);
+bikeRouter.delete('/favorite', authentication, deleteBikeFromFavorites);
+bikeRouter.get('/favorite', authentication, getFavoriteBikes);
 
 module.exports = bikeRouter;
