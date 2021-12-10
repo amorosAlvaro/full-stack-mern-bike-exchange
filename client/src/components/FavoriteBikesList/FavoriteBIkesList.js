@@ -8,15 +8,12 @@ const FavoriteBikesList = function FavoriteBikesList() {
   // const bikes = useSelector((store) => store.bikes);
   const token = useSelector((store) => store.login);
   const favorites = useSelector((store) => store.favorites);
-  console.log('Favorites:', favorites);
 
   const headers = {
     headers: {
       'auth-token': token
     }
   };
-  console.log(favorites);
-  console.log(headers);
 
   useEffect(() => {
     dispatch(loadFavoriteBikes(headers));

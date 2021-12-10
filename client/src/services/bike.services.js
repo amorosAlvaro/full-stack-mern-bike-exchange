@@ -29,16 +29,16 @@ async function deleteBike(config) {
 //   }
 // }
 
-async function deleteBikeFromFavorite(config) {
-  const url = 'http://localhost:3030';
-  console.log('Service input:', config);
-  try {
-    await axios.delete(`${url}/bikes/favorite`, config);
-  } catch (error) {
-    console.log('error in service');
-  }
-}
+// async function deleteBikeFromFavorite(config) {
+//   const url = 'http://localhost:3030';
+//   console.log('Service input:', config);
+//   try {
+//     await axios.delete(`${url}/bikes/favorite`, config);
+//   } catch (error) {
+//     console.log('error in service');
+//   }
+// }
 
 export {
-  addBike, deleteBike, deleteBikeFromFavorite
+  addBike, deleteBike
 };

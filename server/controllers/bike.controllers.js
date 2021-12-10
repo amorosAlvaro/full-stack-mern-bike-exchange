@@ -76,6 +76,7 @@ async function addBikeToFavorites(req, res, next) {
     const bike = await Bike.findById(bikeId);
     bike.favorites = [...bike.favorites, tokenUserId];
     bike.save();
+    console.log('RES FROM SERVER', bike);
     res.json(bike);
   } else {
     next(new Error());
@@ -85,7 +86,6 @@ async function addBikeToFavorites(req, res, next) {
 async function deleteBikeFromFavorites(req, res, next) {
   const bikeId = req.body;
   const userId = req.user;
-  console.log('controler bikeID:', bikeId, 'controler userId:', userId);
 
   if (bikeId && userId) {
     const bike = await Bike.findById(bikeId);
@@ -94,6 +94,7 @@ async function deleteBikeFromFavorites(req, res, next) {
       .filter((item) => item !== userId._id);
     bike.favorites = favoriteFiltered;
     bike.save();
+    console.log('RES FROM DELETEFAVORITE CONTROLLER:', bike);
     res.json(bike);
   } else {
     console.log('error in controler');
