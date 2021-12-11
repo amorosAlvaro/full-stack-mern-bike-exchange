@@ -49,7 +49,7 @@ async function deleteBike(req, res, next) {
   try {
     console.log('Constroler Input:', req.body);
     await Bike.findByIdAndDelete(req.body._id);
-    res.status(201).json();
+    res.status(201).json(req.body._id);
   } catch (error) {
     next(error);
   }

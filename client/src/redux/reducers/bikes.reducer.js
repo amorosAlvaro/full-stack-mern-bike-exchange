@@ -10,7 +10,9 @@ function bikesReducer(bikes = initialBikes, action) {
       nextBikes = action.bikes;
       return nextBikes;
     case actionTypes.DELETE_BIKE:
-      return nextBikes.filter((element) => element !== action.data);
+      console.log('nextBikes;', nextBikes);
+      console.log('action.data', action.data.data);
+      return nextBikes.filter((element) => element._id !== action.data.data);
     default:
       return nextBikes;
   }

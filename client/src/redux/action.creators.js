@@ -57,7 +57,8 @@ export function deleteBike(config) {
   const api = 'http://localhost:3030';
   return async (dispatch) => {
     try {
-      const { data } = await await axios.delete(`${api}/bikes/owned`, config);
+      const data = await axios.delete(`${api}/bikes/owned`, config);
+      console.log('action creator:', data);
       dispatch({ type: actionTypes.DELETE_BIKE, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
