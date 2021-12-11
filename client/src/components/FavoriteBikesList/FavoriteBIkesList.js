@@ -5,7 +5,6 @@ import List from '../common/List/List';
 
 const FavoriteBikesList = function FavoriteBikesList() {
   const dispatch = useDispatch();
-  // const bikes = useSelector((store) => store.bikes);
   const token = useSelector((store) => store.login);
   const favorites = useSelector((store) => store.favorites);
 

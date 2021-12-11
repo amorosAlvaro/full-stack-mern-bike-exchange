@@ -1,6 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import StarIcon from '@mui/icons-material/Star';
+import { SvgIcon } from '@mui/material';
 import { deleteBikeFromFavorite } from '../../../redux/action.creators';
 
 const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
@@ -9,7 +12,7 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
   const favorites = useSelector((store) => store.favorites);
   const token = useSelector((store) => store.login);
 
-  const handleDeleteFavorite = (ev) => {
+  const handleDeleteFavorite = () => {
     const config = {
       headers: {
         'auth-token': token
@@ -22,10 +25,10 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
   };
 
   return (
-    <div>
-      <button type="button" label="button" onClick={handleDeleteFavorite}>UNFAV </button>
+    <button type="button" label="button" onClick={handleDeleteFavorite}>
+      <SvgIcon component={StarIcon} />
+    </button>
 
-    </div>
   );
 };
 

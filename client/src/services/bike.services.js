@@ -9,15 +9,15 @@ async function addBike(bike, header) {
   }
 }
 
-async function deleteBike(config) {
-  const url = 'http://localhost:3030';
-  console.log('Service input:', config);
-  try {
-    await axios.delete(`${url}/bikes/owned`, config);
-  } catch (error) {
-    console.log('error in service');
-  }
-}
+// async function deleteBike(config) {
+//   const url = 'http://localhost:3030';
+//   console.log('Service input:', config);
+//   try {
+//     await axios.delete(`${url}/bikes/owned`, config);
+//   } catch (error) {
+//     console.log('error in service');
+//   }
+// }
 
 // async function addBikeToFavorite(data, headers) {
 //   const url = 'http://localhost:3030';
@@ -40,5 +40,5 @@ async function deleteBike(config) {
 // }
 
 export {
-  addBike, deleteBike
+  addBike
 };

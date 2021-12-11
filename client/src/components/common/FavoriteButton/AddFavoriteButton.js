@@ -1,15 +1,16 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { SvgIcon } from '@mui/material';
+import StarBorderIcon from '@mui/icons-material/StarBorder';
 import { addBikeToFavorite } from '../../../redux/action.creators';
 
 const AddFavoriteButton = function AddFavoriteButton({ _id }) {
   const dispatch = useDispatch();
 
-  const favorites = useSelector((store) => store.favorites);
   const token = useSelector((store) => store.login);
 
-  const handleAddFavorite = (ev) => {
+  const handleAddFavorite = () => {
     const headers = {
       headers: {
         'Content-Type': 'application/json',
@@ -25,9 +26,10 @@ const AddFavoriteButton = function AddFavoriteButton({ _id }) {
   };
 
   return (
-    <div>
-      <button type="button" label="button" onClick={handleAddFavorite}>FAV </button>
-    </div>
+    <button type="button" label="button" onClick={handleAddFavorite}>
+      <SvgIcon component={StarBorderIcon} />
+    </button>
+
   );
 };
 

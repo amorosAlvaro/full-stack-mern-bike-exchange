@@ -8,7 +8,6 @@ const AllBikesList = function AllBikesList() {
 
   const bikes = useSelector((store) => store.bikes);
   const token = useSelector((store) => store.login);
-  // const favorites = useSelector((store) => store.favorites);
 
   const headers = {
     headers: {

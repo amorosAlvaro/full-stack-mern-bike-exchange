@@ -53,13 +53,25 @@ export function loadFavoriteBikes(header) {
   };
 }
 
+export function deleteBike(config) {
+  const api = 'http://localhost:3030';
+  return async (dispatch) => {
+    try {
+      const { data } = await await axios.delete(`${api}/bikes/owned`, config);
+      dispatch({ type: actionTypes.DELETE_BIKE, data });
+    } catch (error) {
+      dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
+    }
+  };
+}
+
 export function deleteBikeFromFavorite(config) {
   const api = 'http://localhost:3030';
 
   return async (dispatch) => {
     try {
-      const { data: favorites } = await axios.delete(`${api}/bikes/favorite`, config);
-      dispatch({ type: actionTypes.DELETE_FROM_FAVORITES, favorites });
+      const { data } = await axios.delete(`${api}/bikes/favorite`, config);
+      dispatch({ type: actionTypes.DELETE_FROM_FAVORITES, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
     }

@@ -34,7 +34,7 @@ const List = function List({ list, type }) {
   return (
     <ImageList cols={1}>
       {list.map((item) => (
-        <Card>
+        <Card key={item._id}>
           <CardHeader
             action={
             loading ? null : (

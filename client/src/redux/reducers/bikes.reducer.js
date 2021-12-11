@@ -4,10 +4,13 @@ const initialBikes = [];
 
 function bikesReducer(bikes = initialBikes, action) {
   let nextBikes = bikes;
+
   switch (action.type) {
     case actionTypes.LOAD_BIKES:
       nextBikes = action.bikes;
       return nextBikes;
+    case actionTypes.DELETE_BIKE:
+      return nextBikes.filter((element) => element !== action.data);
     default:
       return nextBikes;
   }
