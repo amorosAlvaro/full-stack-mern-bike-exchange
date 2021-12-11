@@ -21,3 +21,5 @@ async function logUser(req, res) {
 }
 
 module.exports = { logUser };
+
+// .json({ _id: user._id, userName: user.userName, token: jwToken })

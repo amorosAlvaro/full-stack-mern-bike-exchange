@@ -1,0 +1,35 @@
+@import 'scss/variables';
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: 'Sintony', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Pacifico', cursive;
+}
+
+main {
+  padding: 5%;
+  width: 90%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $primary-background;
+}

@@ -1,15 +1,34 @@
 # TODO TODAY:
 
+
+## Details Component
+
+## Add delete function for owned bikes
+
+## Home Component
+
+
+
 # TODO TOMORROW:
 
-## Start redux
+## Check eslint configuration for back 
 
-## Start redux
+## In register/addbike check for completed fields, atching passwords etc...
 
-## Check eslint configuration for back and front
+## Bug if i fail to log in two times in a row
+
+## Do porpper login incons/routes
+
+
+## Change colors
+
+## Check which tests can be recycled
 
 # TODO ONE DAY:
 
+## NEED TO ADAPT BACKEND TESTS
+
 ## Check how to delete images when deleting bikes
 
-## Test for image controllers
+## Delete image controllers
+# Doubts

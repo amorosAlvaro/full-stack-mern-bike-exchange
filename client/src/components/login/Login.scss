@@ -1,0 +1,22 @@
+@import '../../scss/variables';
+
+
+
+.login-gird{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+
+    &--text{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &--button{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

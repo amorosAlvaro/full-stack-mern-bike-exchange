@@ -1,4 +1,5 @@
 const Bike = require('../models/bike.model');
+const cloudinary = require('../config/cloudinary');
 
 // TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
 
@@ -11,10 +12,6 @@ async function getAllBikes(req, res, next) {
         path: 'owner',
         select: ['userName', 'email', 'province'],
       },
-      {
-        path: 'pictures',
-        select: ['avatar'],
-      },
     ]);
 
     res.json(bikes);
@@ -26,10 +23,22 @@ async function getAllBikes(req, res, next) {
 // Gets bike info from user & ownerID from token (PROTECTED)
 async function postBike(req, res, next) {
   try {
+    const result = await cloudinary.uploader.upload(req.file.path);
+
     const bike = req.body;
     bike.owner = req.user._id;
-    const newBike = Bike.create(bike);
-    res.status(201).json({ newBike });
+
+    const newBike = Bike.create({
+      make: req.body.make,
+      bike_model: req.body.bike_model,
+      km: req.body.km,
+      year: req.body.year,
+      change: req.body.change,
+      owner: bike.owner,
+      avatar: result.secure_url,
+      // cloudinary_id: result.public_id,
+    });
+    res.status(201).json(newBike);
   } catch (error) {
     next(error);
   }
@@ -37,26 +46,37 @@ async function postBike(req, res, next) {
 
 // Checks if user and owner are the same. Gets id to delete from user
 async function deleteBike(req, res, next) {
-  const tokenUserId = req.user._id;
-  const bikeOwnerId = req.body.owner;
-  if (tokenUserId === bikeOwnerId) {
+  try {
+    console.log('Constroler Input:', req.body);
     await Bike.findByIdAndDelete(req.body._id);
-    res.status(202).json({ deletedId: req.params._id });
-  } else {
-    next(new Error());
+    res.status(201).json(req.body._id);
+  } catch (error) {
+    next(error);
   }
 }
+
+// async function deleteBike(req, res, next) {
+//   const tokenUserId = req.user._id;
+//   const bikeOwnerId = req.body.owner;
+//   if (tokenUserId) {
+//     await Bike.findByIdAndDelete(req.body._id);
+//     res.status(202).json();
+//   } else {
+//     next(new Error());
+//   }
+// }
 
 // SAVE NEXT NEED TO BE ASYNC? // DO WE NEED SAVE HERE?
 // Needs bikeID from body and userID from token
 async function addBikeToFavorites(req, res, next) {
-  const { bikeId } = req.body;
+  const bikeId = req.body;
   const tokenUserId = req.user;
 
   if (tokenUserId && bikeId) {
     const bike = await Bike.findById(bikeId);
     bike.favorites = [...bike.favorites, tokenUserId];
     bike.save();
+    console.log('RES FROM SERVER', bike);
     res.json(bike);
   } else {
     next(new Error());
@@ -64,7 +84,7 @@ async function addBikeToFavorites(req, res, next) {
 }
 
 async function deleteBikeFromFavorites(req, res, next) {
-  const { bikeId } = req.body;
+  const bikeId = req.body;
   const userId = req.user;
 
   if (bikeId && userId) {
@@ -74,8 +94,10 @@ async function deleteBikeFromFavorites(req, res, next) {
       .filter((item) => item !== userId._id);
     bike.favorites = favoriteFiltered;
     bike.save();
+    console.log('RES FROM DELETEFAVORITE CONTROLLER:', bike);
     res.json(bike);
   } else {
+    console.log('error in controler');
     next(new Error());
   }
 }
@@ -84,10 +106,7 @@ async function getOwnedBikes(req, res, next) {
   const userId = req.user;
 
   if (userId) {
-    const bikes = await Bike.find().populate({
-      path: 'pictures',
-      select: ['avatar'],
-    });
+    const bikes = await Bike.find();
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
       if (item.owner.toString() === userId._id) {
@@ -109,10 +128,6 @@ async function getFavoriteBikes(req, res, next) {
       {
         path: 'owner',
         select: ['userName', 'email', 'province'],
-      },
-      {
-        path: 'pictures',
-        select: ['avatar'],
       },
     ]);
 

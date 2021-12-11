@@ -15,8 +15,13 @@ module.exports = mongoose.model(
     },
     email: {
       type: String,
+      required: true,
     },
     province: {
+      type: String,
+      required: true,
+    },
+    phone: {
       type: String,
     },
   })

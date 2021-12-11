@@ -1,5 +1,7 @@
-const actionTypes = {
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
   LOAD_BIKES: 'LOAD_BIKES',
+  LOAD_FAVORITES: 'LOAD_FAVORITES',
   POST_BIKE: 'POST_BIKE',
   DELETE_BIKE: 'DELETE_BIKE',
   ADD_TO_FAVORITES: 'ADD_TO_FAVORITES',
@@ -7,6 +9,7 @@ const actionTypes = {
   LOAD_IMAGE: 'LOAD_IMAGE',
   POST_IMAGE: 'POST_IMAGE',
   DELETE_IMAGE: 'DELETE_IMAGE',
+  FAILED_TO_LOAD: 'FAILED_TO_LOAD',
+  LOGIN_USER: 'LOGIN_USER',
+  LOGOUT_USER: 'LOGOUT_USER'
 };
-
-export default actionTypes;

@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { Schema } = mongoose;
 
 module.exports = mongoose.model(
@@ -13,6 +14,9 @@ module.exports = mongoose.model(
     },
     km: {
       type: Number,
+    },
+    province: {
+      type: String,
     },
     year: {
       type: Number,
@@ -30,12 +34,14 @@ module.exports = mongoose.model(
         ref: 'User',
       },
     ],
-    pictures: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Image',
-      },
-    ],
+    avatar: {
+      type: String,
+    },
+
+    cloudinary_id: {
+      type: String,
+    },
+
     display: { type: Boolean, default: true },
-  })
+  }),
 );
