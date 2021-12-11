@@ -1,3 +1,4 @@
+/* eslint-disable for-direction */
 /* eslint-disable no-use-before-define */
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-hooks/exhaustive-deps */
@@ -10,6 +11,8 @@ import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import Favorite from '@mui/icons-material/Favorite';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadFavoriteBikes, addBikeToFavorite, deleteBikeFromFavorite } from '../../../redux/action.creators';
+import DeleteFavoriteButton from './DeleteFavoriteButton';
+import AddFavoriteButton from './AddFavoriteButton';
 
 // import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 // import BookmarkIcon from '@mui/icons-material/Bookmark';
@@ -21,56 +24,16 @@ const FavoriteButton = function FavoriteButton({ _id, token }) {
 
   const favorites = useSelector((store) => store.favorites);
 
-  const handleAddFavorite = (ev) => {
-    ev.preventDefault();
+  const check = (element) => element._id === _id;
 
-    const headers = {
-      headers: {
-        'Content-Type': 'application/json',
-        'auth-token': token
-      }
-    };
-
-    const bikeId = {
-      _id
-    };
-
-    dispatch(addBikeToFavorite(bikeId, headers));
-  };
-
-  const handleDeleteFavorite = (ev) => {
-    ev.preventDefault();
-
-    const config = {
-      headers: {
-        'auth-token': token
-      },
-      data: {
-        _id
-      }
-    };
-    console.log('DELETE_FROM_FAVORITE_BUTTON', config);
-    dispatch(deleteBikeFromFavorite(config));
-  };
+  useEffect(() => {
+  }, [dispatch]);
 
   return (
-    <>
-      <div>
-        {/* <Checkbox {...label} icon={<FavoriteBorder />} checkedIcon={<Favorite />} /> */}
-        <button type="button" label="button" onClick={handleAddFavorite}>FAV </button>
-      </div>
-      <div>
-        {' '}
-      </div>
-      <div />
-      <section>
-        <div>
-          <button type="button" label="button" onClick={handleDeleteFavorite}>UNFAV </button>
+    <div>
+      {favorites.some(check) ? <DeleteFavoriteButton _id={_id} /> : <AddFavoriteButton _id={_id} /> }
+    </div>
 
-        </div>
-      </section>
-
-    </>
   );
 };
 

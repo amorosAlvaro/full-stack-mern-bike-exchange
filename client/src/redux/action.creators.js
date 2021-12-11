@@ -46,7 +46,6 @@ export function loadFavoriteBikes(header) {
   return async (dispatch) => {
     try {
       const { data: favorites } = await axios.get(`${api}/bikes/favorite`, header);
-      console.log('Data in action creator', favorites);
       dispatch({ type: actionTypes.LOAD_FAVORITES, favorites });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
@@ -60,7 +59,6 @@ export function deleteBikeFromFavorite(config) {
   return async (dispatch) => {
     try {
       const { data: favorites } = await axios.delete(`${api}/bikes/favorite`, config);
-      console.log('ACTION CREATEOR DATA PAYLOAD:', favorites);
       dispatch({ type: actionTypes.DELETE_FROM_FAVORITES, favorites });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });

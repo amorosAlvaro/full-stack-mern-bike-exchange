@@ -8,9 +8,7 @@ const AllBikesList = function AllBikesList() {
 
   const bikes = useSelector((store) => store.bikes);
   const token = useSelector((store) => store.login);
-
-  const favorites = useSelector((store) => store.favorites);
-  console.log(favorites);
+  // const favorites = useSelector((store) => store.favorites);
 
   const headers = {
     headers: {
@@ -23,7 +21,7 @@ const AllBikesList = function AllBikesList() {
   }, [dispatch]);
 
   return (
-    <List list={bikes} />
+    <List list={bikes} type="allBikes" />
   );
 };
 
