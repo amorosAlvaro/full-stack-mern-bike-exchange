@@ -12,7 +12,6 @@ function favoriteBikesReducer(favorites = initialFavoriteBikes, action) {
     case actionTypes.ADD_TO_FAVORITES:
       return [...nextFavoriteBikes, action.data];
     case actionTypes.DELETE_FROM_FAVORITES:
-
       return nextFavoriteBikes.filter((element) => element._id !== action.data._id);
     default:
       return nextFavoriteBikes;

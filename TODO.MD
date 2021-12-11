@@ -1,11 +1,10 @@
 # TODO TODAY:
 
+## IMPORTANT: ADD MIDDLEWARE TO DELETE IMAGES FROM CLOUDINARY
 
 ## Details Component
 
-## Add delete function for owned bikes
 
-## Home Component
 
 
 

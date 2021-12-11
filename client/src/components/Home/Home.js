@@ -1,7 +1,12 @@
-import React from 'react';
+import Search from './Search';
+import './Home.scss';
 
-const Home = function Home() {
-  return <div>HOME</div>;
+const Home = function () {
+  return (
+    <section className="home">
+      <Search />
+    </section>
+  );
 };
 
 export default Home;

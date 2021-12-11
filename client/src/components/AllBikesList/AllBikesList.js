@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import TextField from '@mui/material/TextField';
 import { loadBikes, loadFavoriteBikes } from '../../redux/action.creators';
 import List from '../common/List/List';
 
 const AllBikesList = function AllBikesList() {
   const dispatch = useDispatch();
 
+  const [input, setInput] = useState('');
+  const [list, setList] = useState([]);
+
   const bikes = useSelector((store) => store.bikes);
   const token = useSelector((store) => store.login);
+  useEffect(() => {
+    setList(bikes);
+  }, [bikes]);
 
   const headers = {
     headers: {
@@ -19,8 +26,30 @@ const AllBikesList = function AllBikesList() {
     dispatch(loadFavoriteBikes(headers));
   }, [dispatch]);
 
+  useEffect(() => {
+    if (input.length) {
+      const newList = list.filter(
+        (el) => el.make.toLowerCase().includes(input.trim().toLowerCase())
+      );
+      setList(newList);
+    } else {
+      setList(bikes);
+    }
+  }, [input]);
+
   return (
-    <List list={bikes} type="allBikes" />
+    <>
+
+      <div className="search">
+        <TextField
+          id="outlined-required"
+          label="Search"
+          onChange={(event) => setInput(event.target.value)}
+        />
+      </div>
+      <List list={list} type="allBikes" />
+
+    </>
   );
 };
 
