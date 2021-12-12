@@ -24,5 +24,5 @@ module.exports = mongoose.model(
     phone: {
       type: String,
     },
-  })
+  }),
 );

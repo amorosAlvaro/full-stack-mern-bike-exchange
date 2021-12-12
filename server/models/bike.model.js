@@ -12,6 +12,9 @@ module.exports = mongoose.model(
     bike_model: {
       type: String,
     },
+    class: {
+      type: String,
+    },
     km: {
       type: Number,
     },
@@ -21,7 +24,10 @@ module.exports = mongoose.model(
     year: {
       type: Number,
     },
-    change: {
+    change: [{
+      type: Array,
+    }],
+    description: {
       type: Array,
     },
     owner: {

@@ -1,14 +1,23 @@
 # TODO TODAY:
-
-## IMPORTANT: ADD MIDDLEWARE TO DELETE IMAGES FROM CLOUDINARY
-
 ## Details Component
 
+## Routers for log in and not log in
+
+## Selector for bike type
+
+## Searcher by type 
+
+## Add .env variables 
+
+## CSS
 
 
 
 
 # TODO TOMORROW:
+
+## IMPORTANT: ADD MIDDLEWARE TO DELETE IMAGES FROM CLOUDINARY
+
 
 ## Check eslint configuration for back 
 
