@@ -27,7 +27,7 @@ const Login = function Login() {
 
   const token = useSelector((store) => store.login);
   if (token) {
-    navigate('../bikes');
+    navigate(-1);
   }
 
   return (

@@ -18,7 +18,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
-import Details from '../../Details/Details';
 
 const List = function List({ list, type }) {
   const { loading = false } = list;

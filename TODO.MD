@@ -1,6 +1,5 @@
 # TODO TODAY:
 
-
 ## Searcher by type 
 
 ## Add .env variables 
@@ -14,7 +13,6 @@
 ## Check why server crashes when wrong log in and when wrong addUser
 
 ## Add delay to linked routes
-
 
 
 

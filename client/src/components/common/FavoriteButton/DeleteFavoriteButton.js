@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import StarIcon from '@mui/icons-material/Star';
 import { SvgIcon } from '@mui/material';
@@ -8,6 +10,7 @@ import { deleteBikeFromFavorite } from '../../../redux/action.creators';
 
 const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const favorites = useSelector((store) => store.favorites);
   const token = useSelector((store) => store.login);
@@ -21,7 +24,7 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
         _id
       }
     };
-    dispatch(deleteBikeFromFavorite(config));
+    token ? dispatch(deleteBikeFromFavorite(config)) : navigate(-1);
   };
 
   return (

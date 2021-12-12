@@ -7,6 +7,10 @@ import AddFavoriteButton from './AddFavoriteButton';
 const FavoriteButton = function FavoriteButton({ _id }) {
   const favorites = useSelector((store) => store.favorites);
 
+  // const token = useSelector((store) => store.login);
+  // TODO a delete favorites from state when no token
+  // token ? dispatch(deleteBikeFromFavorite(config)) : navigate(-1);
+
   const check = (element) => element._id === _id;
 
   return (
