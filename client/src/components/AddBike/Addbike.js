@@ -77,7 +77,6 @@ const AddBike = function AddBike() {
     formData.append('change', checked);
     formData.append('description', bikeState.description);
     formData.append('class', bikeState.class);
-    console.log(formData);
 
     addBike(formData, headers);
   };
@@ -145,12 +144,6 @@ const AddBike = function AddBike() {
             type="number"
             value={bikeState.number}
             onChange={handleChange('year')}
-          />
-          <TextField
-            id="outlined-password"
-            label="Change"
-            value={bikeState.change}
-            onChange={handleChange('change')}
           />
           <TextField
             id="outlined-multiline-static"

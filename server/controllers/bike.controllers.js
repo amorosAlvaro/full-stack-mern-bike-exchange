@@ -36,7 +36,7 @@ async function postBike(req, res, next) {
       change: req.body.change,
       owner: bike.owner,
       avatar: result.secure_url,
-      // cloudinary_id: result.public_id,
+      cloudinary_id: result.public_id,
     });
     res.status(201).json(newBike);
   } catch (error) {
@@ -47,6 +47,9 @@ async function postBike(req, res, next) {
 // Checks if user and owner are the same. Gets id to delete from user
 async function deleteBike(req, res, next) {
   try {
+    const bike = await Bike.findById(req.body._id);
+    await cloudinary.uploader.destroy(bike.cloudinary_id);
+
     console.log('Constroler Input:', req.body);
     await Bike.findByIdAndDelete(req.body._id);
     res.status(201).json(req.body._id);

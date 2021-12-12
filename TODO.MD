@@ -3,15 +3,11 @@
 
 ## Routers for log in and not log in
 
-## Selector for bike type
-
 ## Searcher by type 
 
 ## Add .env variables 
 
 ## CSS
-
-
 
 
 # TODO TOMORROW:
