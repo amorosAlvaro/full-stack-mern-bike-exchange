@@ -28,7 +28,7 @@ module.exports = mongoose.model(
       type: Array,
     }],
     description: {
-      type: Array,
+      type: String,
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -47,7 +47,6 @@ module.exports = mongoose.model(
     cloudinary_id: {
       type: String,
     },
-
     display: { type: Boolean, default: true },
   }),
 );

@@ -1,7 +1,5 @@
 # TODO TODAY:
-## Details Component
 
-## Routers for log in and not log in
 
 ## Searcher by type 
 
@@ -11,8 +9,13 @@
 
 
 # TODO TOMORROW:
+## Check why description is not getting saved in the data base
 
-## IMPORTANT: ADD MIDDLEWARE TO DELETE IMAGES FROM CLOUDINARY
+## Check why server crashes when wrong log in and when wrong addUser
+
+## Add delay to linked routes
+
+
 
 
 ## Check eslint configuration for back 

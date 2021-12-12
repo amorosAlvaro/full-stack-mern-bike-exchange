@@ -9,6 +9,14 @@ module.exports = mongoose.model(
       type: String,
       required: true,
     },
+    name: {
+      type: String,
+      required: true,
+    },
+    surname: {
+      type: String,
+      required: true,
+    },
     password: {
       type: String,
       required: true,

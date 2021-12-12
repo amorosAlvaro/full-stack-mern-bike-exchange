@@ -24,7 +24,7 @@ const App = function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SignUp />} />
-            <Route path="/owned/addbike" element={<AddBike />} />
+            <Route path="/addbike" element={<AddBike />} />
             <Route path="/bikes" element={<AllBikesList />} />
             <Route path="/bikes/owned" element={<OwnedBikesList />} />
             <Route path="/bikes/favorite" element={<FavoriteBikesList />} />

@@ -21,7 +21,7 @@ const Sidebar = function Sidebar() {
         <img src={home} alt="home icon" className="slide__icon" />
         Home
       </Link>
-      <Link to="/owned/addbike" onClick={handleClick}>
+      <Link to="/addbike" onClick={handleClick}>
         <img src={star} alt="favorites icon" className="slide__icon" />
         Add Bike
       </Link>

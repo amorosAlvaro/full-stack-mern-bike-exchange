@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -11,6 +11,7 @@ import './Login.scss';
 // ADD: If correct password, redirect to home, if not, display message
 
 const Login = function Login() {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [loginState, setLoginState] = useState({ userName: '', password: '' });
@@ -24,12 +25,11 @@ const Login = function Login() {
     setLoginState({ ...loginState, [control]: evt.target.value });
   };
 
-  // if (loginState.userName && loginState.password) {
-  //   console.log();
-  // }
+  const token = useSelector((store) => store.login);
+  if (token) {
+    navigate('../bikes');
+  }
 
-  // const buttonState = 'disabled';
-  // console.log(buttonState);
   return (
     <div className="login-gird">
       <Box

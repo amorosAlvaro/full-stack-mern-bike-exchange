@@ -10,7 +10,7 @@ async function getAllBikes(req, res, next) {
     const bikes = await Bike.find(query).populate([
       {
         path: 'owner',
-        select: ['userName', 'email', 'province'],
+        select: ['userName', 'email', 'province', 'phone', 'name', 'surname'],
       },
     ]);
 

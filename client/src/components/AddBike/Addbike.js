@@ -15,6 +15,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import CommentIcon from '@mui/icons-material/Comment';
+import { useNavigate } from 'react-router-dom';
 
 const bikeClasses = [
   {
@@ -41,6 +42,7 @@ const bikeClasses = [
 
 const AddBike = function AddBike() {
   const token = useSelector((store) => store.login);
+  const navigate = useNavigate();
 
   const headers = {
     headers: {
@@ -78,7 +80,13 @@ const AddBike = function AddBike() {
     formData.append('description', bikeState.description);
     formData.append('class', bikeState.class);
 
-    addBike(formData, headers);
+    const res = addBike(formData, headers);
+
+    // Add some timer or check if promise resolved here
+    if (res) {
+      console.log(res);
+      navigate('../bikes/owned');
+    }
   };
 
   const handleToggle = (value) => () => {

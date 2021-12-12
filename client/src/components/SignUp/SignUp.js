@@ -3,16 +3,22 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../services/user.services';
+
 import './SignUp.scss';
 
 const SingUp = function SignUp() {
+  const navigate = useNavigate();
+
   const [registerState, setRegisterState] = useState({
     userName: '',
     password: '',
     email: '',
     province: '',
-    phone: ''
+    phone: '',
+    name: '',
+    surname: ''
   });
 
   // const [buttonState, setButtonState] = useState('disabled');
@@ -21,6 +27,7 @@ const SingUp = function SignUp() {
     // Why do we need prevents default if here?
     ev.preventDefault();
     registerUser(registerState);
+    navigate('../login');
   };
 
   const handleChange = (evt, control) => {
@@ -40,8 +47,20 @@ const SingUp = function SignUp() {
         <TextField
           required
           id="outlined-required"
-          label="User"
+          label="User Name"
           onChange={(ev) => handleChange(ev, 'userName')}
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Name"
+          onChange={(ev) => handleChange(ev, 'name')}
+        />
+        <TextField
+          required
+          id="outlined-required"
+          label="Surname"
+          onChange={(ev) => handleChange(ev, 'surname')}
         />
         <TextField
           required
