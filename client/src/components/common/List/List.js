@@ -15,21 +15,15 @@ import IconButton from '@mui/material/IconButton';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Skeleton from '@mui/material/Skeleton';
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
+import Details from '../../Details/Details';
 
 const List = function List({ list, type }) {
   const { loading = false } = list;
 
   const token = useSelector((store) => store.login);
-  let headers;
-  if (token) {
-    headers = {
-      headers: {
-        'auth-token': token
-      }
-    };
-  }
 
   return (
     <ImageList cols={1}>
@@ -70,12 +64,16 @@ const List = function List({ list, type }) {
           {loading ? (
             <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
           ) : (
-            <CardMedia
-              component="img"
-              height="140"
-              image={item.avatar}
-              alt="Nicola Sturgeon on a TED talk stage"
-            />
+            <Link className="recipes-nav__link" to={`/details/${item._id}`}>
+              {console.log('_id in item card', item._id)}
+              <CardMedia
+                component="img"
+                height="140"
+                image={item.avatar}
+                alt="Nicola Sturgeon on a TED talk stage"
+              />
+            </Link>
+
           )}
 
           <CardContent>
@@ -90,6 +88,7 @@ const List = function List({ list, type }) {
               </Typography>
             )}
           </CardContent>
+
         </Card>
       ))}
     </ImageList>
