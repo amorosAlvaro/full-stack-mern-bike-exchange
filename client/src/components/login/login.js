@@ -18,7 +18,7 @@ const Login = function Login() {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    dispatch(logUser(loginState));
+    console.log('Dispatch res:', dispatch(logUser(loginState)));
   };
 
   const handleChange = (evt, control) => {
@@ -27,7 +27,7 @@ const Login = function Login() {
 
   const token = useSelector((store) => store.login);
   if (token) {
-    navigate(-1);
+    navigate('../bikes');
   }
 
   return (

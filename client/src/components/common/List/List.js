@@ -21,9 +21,9 @@ const List = function List({ list, type }) {
   const token = useSelector((store) => store.login);
 
   return (
-    <ImageList cols={1}>
+    <ImageList cols={1} className="bike-list">
       {list.map((item) => (
-        <Card key={item._id}>
+        <Card key={item._id} sx={{ width: 335, m: 2 }}>
           <CardHeader
             action={(
               <IconButton aria-label="settings">

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import { loadBikes, loadFavoriteBikes } from '../../redux/action.creators';
 import List from '../common/List/List';
+import './AllBikesList.scss';
 
 const AllBikesList = function AllBikesList() {
   const dispatch = useDispatch();
@@ -39,17 +40,20 @@ const AllBikesList = function AllBikesList() {
 
   return (
     <>
-      <h2>All Bikes</h2>
-      <div className="search">
-        <TextField
-          id="outlined-required"
-          label="Search"
-          onChange={(event) => setInput(event.target.value)}
-        />
-      </div>
+      <section className="sub-header">
+        <h2>All Bikes</h2>
+        <div className="search">
+          <TextField
+            id="outlined-required"
+            label="Search by brand..."
+            onChange={(event) => setInput(event.target.value)}
+          />
+        </div>
+      </section>
       <List list={list} type="allBikes" />
 
     </>
+
   );
 };
 

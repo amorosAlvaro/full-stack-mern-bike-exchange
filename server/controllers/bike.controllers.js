@@ -1,9 +1,6 @@
 const Bike = require('../models/bike.model');
 const cloudinary = require('../config/cloudinary');
 
-// TODO: FIX THAT USER CAN ADD ONLY ONE TIME TO FAVORITES
-
-// This comes with query option. Needs populate to be added
 async function getAllBikes(req, res, next) {
   const query = req.body;
   try {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable import/order */
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
@@ -81,11 +82,9 @@ const AddBike = function AddBike() {
     formData.append('class', bikeState.class);
 
     const res = addBike(formData, headers);
-    console.log('Data send from front:', formData);
 
     // Add some timer or check if promise resolved here
     if (res) {
-      console.log(res);
       navigate('../bikes/owned');
     }
   };
@@ -164,18 +163,13 @@ const AddBike = function AddBike() {
             onChange={handleChange('description')}
 
           />
-          <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#eeeeee' }}>
             {['Custom', 'Naked', 'Sports', 'Turismo'].map((value) => {
               const labelId = `checkbox-list-label-${value}`;
 
               return (
                 <ListItem
                   key={value}
-                  secondaryAction={(
-                    <IconButton edge="end" aria-label="comments">
-                      <CommentIcon />
-                    </IconButton>
-            )}
                   disablePadding
                 >
                   <ListItemButton role={undefined} onClick={handleToggle(value)} dense>

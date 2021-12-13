@@ -23,15 +23,4 @@ function deleteUser(req, res, next) {
   });
 }
 
-// function getUserByName(req, res, next) {
-//   if (!req.params.userName) {
-//     next(new Error('Invalid name'));
-//     return;
-//   }
-//   const { userName } = req.params;
-//   User.find({ userName })
-//     .then((result) => res.json(result))
-//     .catch((err) => next(err));
-// }
-
 module.exports = { addUser, deleteUser };

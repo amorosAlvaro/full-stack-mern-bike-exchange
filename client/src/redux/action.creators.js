@@ -26,51 +26,6 @@ export function loadBikeById(bikes) {
   };
 }
 
-// export function loadBikeById(id) {
-//   const api = 'http://localhost:3030';
-//   return async (dispatch) => {
-//     try {
-//       const { data: allBikes } = await axios.get(`${api}/bikes`);
-//       console.log('Config in action-creator:', id);
-//       console.log('Data in action-creator', allBikes);
-//       const bikes = allBikes.filter((element) => element._id === id);
-//       console.log('Bike after filter', bikes);
-
-//       dispatch({ type: actionTypes.LOAD_BIKES, bikes });
-//     } catch (error) {
-//       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
-//     }
-//   };
-// }
-
-// export function loadBikeById(id) {
-//   const api = 'http://localhost:3030';
-
-//   return async (dispatch) => {
-//     try {
-//       console.log('id in axios', id);
-//       const bike = await axios.get(`${api}/details/${id}`);
-//       console.log('Return from axios:', bike);
-//       dispatch({ type: actionTypes.LOAD_BIKES, bike });
-//     } catch (error) {
-//       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
-//     }
-//   };
-// }
-
-// export async function loadBikeById(config) {
-//   const api = 'http://localhost:3030';
-//   return async (dispatch) => {
-//     try {
-//       const params = new url.URLSearchParams(config);
-//       const bike = await axios.get(`${api}/get?${params}`);
-//       dispatch({ type: actionTypes.LOAD_BIKES, bike });
-//     } catch (error) {
-//       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
-//     }
-//   };
-// }
-
 export function loadOwnedBikes(header) {
   const api = 'http://localhost:3030';
 
@@ -102,7 +57,6 @@ export function deleteBike(config) {
   return async (dispatch) => {
     try {
       const data = await axios.delete(`${api}/bikes/owned`, config);
-      console.log('action creator:', data);
       dispatch({ type: actionTypes.DELETE_BIKE, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
@@ -141,7 +95,6 @@ export function logUser(userData) {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${api}/login`, userData);
-      console.log('DATA in action.creator:', data);
       dispatch({ type: actionTypes.LOGIN_USER, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
