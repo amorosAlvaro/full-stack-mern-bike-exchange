@@ -19,7 +19,6 @@ describe('Given the component Details', () => {
       // console.log('HISTORY:', history);
 
       render(
-
         <Provider store={configureStore({
           bikes: [{
             id: '222',
