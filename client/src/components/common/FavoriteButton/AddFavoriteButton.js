@@ -32,7 +32,6 @@ const AddFavoriteButton = function AddFavoriteButton({ _id }) {
     <button type="button" label="button" onClick={handleAddFavorite}>
       <SvgIcon component={StarBorderIcon} />
     </button>
-
   );
 };
 

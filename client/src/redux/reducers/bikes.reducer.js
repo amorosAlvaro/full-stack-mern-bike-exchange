@@ -7,7 +7,6 @@ function bikesReducer(bikes = initialBikes, action) {
 
   switch (action.type) {
     case actionTypes.LOAD_BIKES:
-      console.log('reducer action:', action);
       nextBikes = action.bikes;
       return nextBikes;
     case actionTypes.DELETE_BIKE:

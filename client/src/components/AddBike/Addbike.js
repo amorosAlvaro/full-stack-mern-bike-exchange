@@ -81,6 +81,7 @@ const AddBike = function AddBike() {
     formData.append('class', bikeState.class);
 
     const res = addBike(formData, headers);
+    console.log('Data send from front:', formData);
 
     // Add some timer or check if promise resolved here
     if (res) {
@@ -129,7 +130,7 @@ const AddBike = function AddBike() {
           <TextField
             id="outlined-select-currency"
             select
-            label="Type"
+            label="Class"
             value={bikeState.class}
             onChange={handleChange('class')}
           >

@@ -18,7 +18,6 @@ const App = function App() {
       <BrowserRouter>
         <Header />
         <Sidebar />
-
         <main>
           <Routes>
             <Route path="/" element={<Home />} />

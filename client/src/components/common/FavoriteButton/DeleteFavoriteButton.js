@@ -12,7 +12,6 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const favorites = useSelector((store) => store.favorites);
   const token = useSelector((store) => store.login);
 
   const handleDeleteFavorite = () => {
@@ -31,7 +30,6 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
     <button type="button" label="button" onClick={handleDeleteFavorite}>
       <SvgIcon component={StarIcon} />
     </button>
-
   );
 };
 

@@ -1,10 +1,10 @@
-import Search from './Search';
+// import Search from './Search';
 import './Home.scss';
 
 const Home = function () {
   return (
     <section className="home">
-      <Search />
+      {/* <Search /> */}
     </section>
   );
 };

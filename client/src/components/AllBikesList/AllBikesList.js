@@ -39,7 +39,7 @@ const AllBikesList = function AllBikesList() {
 
   return (
     <>
-
+      <h2>All Bikes</h2>
       <div className="search">
         <TextField
           id="outlined-required"
