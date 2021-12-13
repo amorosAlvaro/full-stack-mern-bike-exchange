@@ -30,6 +30,8 @@ const Details = function Details() {
   const bikes = useSelector((store) => store.bikes);
   const bike = bikes.filter((element) => element._id === id);
 
+  console.log('bike:', bike);
+
   useEffect(() => {
     dispatch(loadBikeById(bike));
   }, [dispatch]);
@@ -44,7 +46,6 @@ const Details = function Details() {
       </div>
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
             <Grid item xs={6}>
               <Item>{`Owner: ${bikes[0].owner.name} ${bikes[0].owner.surname}`}</Item>

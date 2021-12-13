@@ -19,7 +19,10 @@ const OwnedBikesList = function OwnedBikesList() {
   }, [dispatch]);
 
   return (
-    <List list={bikes} type="owned" />
+    <>
+      <h2>Your Bikes</h2>
+      <List list={bikes} type="owned" />
+    </>
   );
 };
 

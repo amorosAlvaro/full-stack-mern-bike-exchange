@@ -19,7 +19,10 @@ const FavoriteBikesList = function FavoriteBikesList() {
   }, [dispatch]);
 
   return (
-    <List list={favorites} type="favorite" />
+    <>
+      <h2>Favorites</h2>
+      <List list={favorites} type="favorite" />
+    </>
   );
 };
 

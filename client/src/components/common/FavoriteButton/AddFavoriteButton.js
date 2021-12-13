@@ -25,7 +25,7 @@ const AddFavoriteButton = function AddFavoriteButton({ _id }) {
       _id
     };
 
-    token ? dispatch(addBikeToFavorite(bikeId, headers)) : navigate(-1);
+    token ? dispatch(addBikeToFavorite(bikeId, headers)) : navigate('../login');
   };
 
   return (

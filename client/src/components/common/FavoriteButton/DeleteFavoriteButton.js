@@ -23,7 +23,7 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
         _id
       }
     };
-    token ? dispatch(deleteBikeFromFavorite(config)) : navigate(-1);
+    token ? dispatch(deleteBikeFromFavorite(config)) : navigate('../login');
   };
 
   return (
