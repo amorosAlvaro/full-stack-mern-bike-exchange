@@ -14,7 +14,7 @@ jest.mock('../../redux/action.creators', () => ({
 
 describe('Given the component AllBikesList', () => {
   describe('when component is instantiated', () => {
-    test('then it should be rendered', () => {
+    test('then it should be rendered and loadBikes should be called', () => {
       const bikes = [
         {
           make: 'honda',
@@ -28,13 +28,12 @@ describe('Given the component AllBikesList', () => {
         }
       ];
       loadBikes.mockReturnValueOnce({ type: actionTypes.LOAD_BIKES, bikes });
-      loadFavoriteBikes.mockReturnValueOnce({ type: actionTypes.LOAD_FAVORITES, favorites });
 
       render(
 
         <AllBikesList />
       );
-      expect(screen.getByText(/All Bikes/i)).toBeInTheDocument();
+      expect(screen.getByText(/honda/i)).toBeInTheDocument();
     });
   });
 });

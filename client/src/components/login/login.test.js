@@ -12,9 +12,11 @@ describe('Given the component Login', () => {
 
     const inputUserName = screen.getByPlaceholderText('User Name');
     const inputPassword = screen.getByPlaceholderText('Password');
+    const loginButton = screen.getByPlaceholderText('login');
 
     fireEvent.change(inputUserName, { target: { value: 'alvaro' } });
     fireEvent.change(inputPassword, { target: { value: '123' } });
+    fireEvent.click(loginButton);
 
     expect(inputUserName.value).toBe('alvaro');
     expect(inputPassword.value).toBe('123');

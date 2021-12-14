@@ -111,6 +111,7 @@ const AddBike = function AddBike() {
         <div className="addbike-grid">
           <TextField
             required
+            placeholder="make-field"
             id="outlined-required"
             label="Make"
             value={bikeState.make}
@@ -195,7 +196,7 @@ const AddBike = function AddBike() {
               onChange={handleChange('image')}
             />
           </div>
-          <Button variant="outlined" onClick={handleSubmit}>
+          <Button variant="outlined" onClick={handleSubmit} placeholder="save-button">
             Save
           </Button>
         </div>

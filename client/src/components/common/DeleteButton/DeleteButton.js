@@ -8,8 +8,7 @@ import { deleteBike } from '../../../redux/action.creators';
 const DeleteButton = function DeleteButton({ _id, token }) {
   const dispatch = useDispatch();
 
-  const handleDelete = (ev) => {
-    ev.preventDefault();
+  const handleDelete = () => {
     const config = {
       headers: {
         'auth-token': token
