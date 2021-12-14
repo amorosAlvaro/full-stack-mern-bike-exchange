@@ -14,26 +14,34 @@ jest.mock('../../redux/action.creators', () => ({
 
 describe('Given the component AllBikesList', () => {
   describe('when component is instantiated', () => {
+    const bikes = [
+      {
+        make: 'honda',
+        owner: { name: 'pepe' }
+      }
+    ];
+
+    loadBikes.mockReturnValueOnce({ type: actionTypes.LOAD_BIKES, bikes });
+    render(<AllBikesList />, { bikes });
+
     test('then it should be rendered and loadBikes should be called', () => {
-      const bikes = [
-        {
-          make: 'honda',
-          owner: { name: 'pepe' }
-        }
-      ];
+      expect(screen.getByText(/honda/i)).toBeInTheDocument();
+    });
+    test('If users is logged in, Get Favorite Bikes should be called', () => {
+      const token = '222';
       const favorites = [
         {
           make: 'fav',
           owner: { name: 'fav' }
         }
       ];
-      loadBikes.mockReturnValueOnce({ type: actionTypes.LOAD_BIKES, bikes });
-
-      render(
-
-        <AllBikesList />
-      );
-      expect(screen.getByText(/honda/i)).toBeInTheDocument();
+      const headers = {
+        headers: {
+          'auth-token': token
+        }
+      };
+      loadFavoriteBikes.mockReturnValueOnce({ type: actionTypes.LOAD_FAVORITES, favorites });
+      render(<AllBikesList />, { favorites });
     });
   });
 });

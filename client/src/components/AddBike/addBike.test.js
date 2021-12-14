@@ -18,7 +18,7 @@ describe('Given the component Addbike', () => {
   });
 });
 
-describe('Save data button is rendered', () => {
+test('Save data button is rendered', () => {
   render(<AddBike />);
   const saveButton = screen.getByPlaceholderText('save-button');
   fireEvent.click(saveButton);

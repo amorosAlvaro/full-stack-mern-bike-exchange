@@ -23,7 +23,7 @@ const DeleteButton = function DeleteButton({ _id, token }) {
   return (
 
     <Stack direction="row" spacing={2}>
-      <DeleteIcon onClick={handleDelete} />
+      <DeleteIcon onClick={handleDelete} placeholder="delete-button" />
     </Stack>
 
   );
