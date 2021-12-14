@@ -29,9 +29,8 @@ const AddFavoriteButton = function AddFavoriteButton({ _id }) {
   };
 
   return (
-    <button type="button" label="button" onClick={handleAddFavorite}>
-      <SvgIcon component={StarBorderIcon} />
-    </button>
+
+    <SvgIcon component={StarBorderIcon} onClick={handleAddFavorite} />
   );
 };
 

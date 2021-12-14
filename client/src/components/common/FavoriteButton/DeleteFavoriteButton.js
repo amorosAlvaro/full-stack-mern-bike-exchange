@@ -27,9 +27,7 @@ const DeleteFavoriteButton = function DeleteFavoriteButton({ _id }) {
   };
 
   return (
-    <button type="button" label="button" onClick={handleDeleteFavorite}>
-      <SvgIcon component={StarIcon} />
-    </button>
+    <SvgIcon component={StarIcon} onClick={handleDeleteFavorite} />
   );
 };
 

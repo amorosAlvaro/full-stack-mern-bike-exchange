@@ -20,3 +20,7 @@ describe('Given the component AllBikesList', () => {
     });
   });
 });
+
+describe('When there is no data in the local state', () => {
+
+});

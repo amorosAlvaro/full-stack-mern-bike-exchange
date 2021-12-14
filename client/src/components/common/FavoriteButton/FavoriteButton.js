@@ -10,7 +10,7 @@ const FavoriteButton = function FavoriteButton({ _id }) {
   const check = (element) => element._id === _id;
 
   return (
-    <div>
+    <div className="favoriteIcon">
       {favorites.some(check) ? <DeleteFavoriteButton _id={_id} /> : <AddFavoriteButton _id={_id} /> }
     </div>
 

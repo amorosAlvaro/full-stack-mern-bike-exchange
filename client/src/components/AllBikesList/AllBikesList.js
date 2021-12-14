@@ -24,7 +24,9 @@ const AllBikesList = function AllBikesList() {
   };
   useEffect(() => {
     dispatch(loadBikes());
-    dispatch(loadFavoriteBikes(headers));
+    if (token) {
+      dispatch(loadFavoriteBikes(headers));
+    }
   }, [dispatch]);
 
   useEffect(() => {

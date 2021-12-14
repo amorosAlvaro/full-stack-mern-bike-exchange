@@ -30,8 +30,6 @@ const Details = function Details() {
   const bikes = useSelector((store) => store.bikes);
   const bike = bikes.filter((element) => element._id === id);
 
-  console.log('bike:', bike);
-
   useEffect(() => {
     dispatch(loadBikeById(bike));
   }, [dispatch]);
