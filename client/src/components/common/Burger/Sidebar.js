@@ -1,15 +1,10 @@
-/* eslint-disable import/order */
 import { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
-// import star from '../../../assets/icons/start-white.svg';
-// import home from '../../../assets/icons/white-house.svg';
-// import user from '../../../assets/icons/user-icon.svg';
 import './Sidebar.scss';
 import { useSelector } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
 import HomeIcon from '@mui/icons-material/Home';
-import DirectionsBikeIcon from '@mui/icons-material/DirectionsBike';
 import StarIcon from '@mui/icons-material/Star';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 
@@ -31,10 +26,6 @@ const Sidebar = function Sidebar() {
       <Link to="/" onClick={handleClick}>
         <SvgIcon component={HomeIcon} alt="home icon" className="slide__icon" />
         Home
-      </Link>
-      <Link to="/bikes" onClick={handleClick}>
-        <SvgIcon component={DirectionsBikeIcon} alt="user icon" className="slide__icon" />
-        All bikes
       </Link>
       <Link to={token ? './bikes/favorite' : './login'} onClick={handleClick}>
         <SvgIcon component={StarIcon} alt="user icon" className="slide__icon" />

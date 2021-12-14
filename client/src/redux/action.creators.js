@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import url from 'url';
 import actionTypes from './action.types';
 
-export function loadBikes(config) {
-  const api = 'http://localhost:3030';
+const api = 'http://localhost:3030';
 
+export function loadBikes(config) {
   return async (dispatch) => {
     try {
       const { data: bikes } = await axios.get(`${api}/bikes`, config);
@@ -17,18 +16,18 @@ export function loadBikes(config) {
 }
 
 export function loadBikeById(bikes) {
-  return async (dispatch) => {
+  return { type: actionTypes.LOAD_BIKES, bikes };
+
+  /* return async (dispatch) => {
     try {
       dispatch({ type: actionTypes.LOAD_BIKES, bikes });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
     }
-  };
+  }; */
 }
 
 export function loadOwnedBikes(header) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data: bikes } = await axios.get(`${api}/bikes/owned`, header);
@@ -40,8 +39,6 @@ export function loadOwnedBikes(header) {
 }
 
 export function loadFavoriteBikes(header) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data: favorites } = await axios.get(`${api}/bikes/favorite`, header);
@@ -53,7 +50,6 @@ export function loadFavoriteBikes(header) {
 }
 
 export function deleteBike(config) {
-  const api = 'http://localhost:3030';
   return async (dispatch) => {
     try {
       const data = await axios.delete(`${api}/bikes/owned`, config);
@@ -65,8 +61,6 @@ export function deleteBike(config) {
 }
 
 export function deleteBikeFromFavorite(config) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data } = await axios.delete(`${api}/bikes/favorite`, config);
@@ -77,8 +71,6 @@ export function deleteBikeFromFavorite(config) {
   };
 }
 export function addBikeToFavorite(bikeId, headers) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${api}/bikes/favorite`, bikeId, headers);
@@ -90,8 +82,6 @@ export function addBikeToFavorite(bikeId, headers) {
 }
 
 export function logUser(userData) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${api}/login`, userData);

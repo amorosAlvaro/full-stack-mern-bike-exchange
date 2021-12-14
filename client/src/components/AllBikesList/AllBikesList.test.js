@@ -1,6 +1,6 @@
 /* eslint-disable import/no-unresolved */
-import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
+import { render, screen } from '../../utils/test.utils';
 import AllBikesList from './AllBikesList';
 import configureStore from '../../redux/store/index';
 
@@ -9,9 +9,7 @@ describe('Given the component AllBikesList', () => {
     test('then it should be rendered', () => {
       render(
 
-        <Provider store={configureStore()}>
-          <AllBikesList />
-        </Provider>
+        <AllBikesList />
       );
       expect(screen.getByText(/All Bikes/i)).toBeInTheDocument();
     });

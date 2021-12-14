@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Login from './components/Login/Login';
 import Header from './components/common/Header/Header';
-import Home from './components/Home/Home';
+// import Home from './components/Home/Home';
 import './App.scss';
 import Sidebar from './components/common/Burger/Sidebar';
 import SignUp from './components/SignUp/SignUp';
@@ -20,11 +20,10 @@ const App = function App() {
         <Sidebar />
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<AllBikesList />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<SignUp />} />
             <Route path="/addbike" element={<AddBike />} />
-            <Route path="/bikes" element={<AllBikesList />} />
             <Route path="/bikes/owned" element={<OwnedBikesList />} />
             <Route path="/bikes/favorite" element={<FavoriteBikesList />} />
             <Route path="/details/:id" element={<Details />} />

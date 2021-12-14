@@ -21,10 +21,7 @@ const SingUp = function SignUp() {
     surname: ''
   });
 
-  // const [buttonState, setButtonState] = useState('disabled');
-
   const handleSubmit = (ev) => {
-    // Why do we need prevents default if here?
     ev.preventDefault();
     registerUser(registerState);
     navigate('../login');

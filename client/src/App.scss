@@ -13,7 +13,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: 'Arial';
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
 h1,
@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family:  'Arial',
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
 main {
@@ -33,9 +33,5 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center ;
-  background-color: #eeeeee
-
-
-
-  ;
+  background-color: #eeeeee;
 }

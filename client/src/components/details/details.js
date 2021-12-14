@@ -1,5 +1,3 @@
-/* eslint-disable import/no-cycle */
-/* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -20,14 +18,10 @@ const Item = styled(Paper)(({ theme }) => ({
 const Details = function Details() {
   const { id } = useParams();
 
-  const config = {
-    params: {
-      id
-    }
-  };
-
   const dispatch = useDispatch();
   const bikes = useSelector((store) => store.bikes);
+  console.log({ bikes });
+  // eslint-disable-next-line no-unused-vars
   const bike = bikes.filter((element) => element._id === id);
 
   useEffect(() => {

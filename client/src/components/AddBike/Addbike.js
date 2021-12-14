@@ -1,11 +1,8 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable import/order */
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
-import { addBike } from '../../services/bike.services';
 import './AddBike.scss';
 import MenuItem from '@mui/material/MenuItem';
 import List from '@mui/material/List';
@@ -14,9 +11,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-import IconButton from '@mui/material/IconButton';
-import CommentIcon from '@mui/icons-material/Comment';
+
 import { useNavigate } from 'react-router-dom';
+import { addBike } from '../../services/bike.services';
 
 const bikeClasses = [
   {
@@ -83,7 +80,6 @@ const AddBike = function AddBike() {
 
     const res = addBike(formData, headers);
 
-    // Add some timer or check if promise resolved here
     if (res) {
       navigate('../bikes/owned');
     }
