@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from '@mui/material/Stack';
 import { useDispatch } from 'react-redux';
@@ -25,9 +24,7 @@ const DeleteButton = function DeleteButton({ _id, token }) {
   return (
 
     <Stack direction="row" spacing={2}>
-      <IconButton aria-label="delete" size="large" onClick={handleDelete}>
-        <DeleteIcon />
-      </IconButton>
+      <DeleteIcon onClick={handleDelete} />
     </Stack>
 
   );

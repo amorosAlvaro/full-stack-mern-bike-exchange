@@ -31,6 +31,7 @@ async function postBike(req, res, next) {
       km: req.body.km,
       year: req.body.year,
       change: req.body.change,
+      description: req.body.description,
       owner: bike.owner,
       avatar: result.secure_url,
       cloudinary_id: result.public_id,
