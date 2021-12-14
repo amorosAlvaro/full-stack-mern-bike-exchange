@@ -42,41 +42,48 @@ const SingUp = function SignUp() {
     >
       <div className="signup-grid">
         <TextField
+          placeholder="User Name"
           required
           id="outlined-required"
           label="User Name"
           onChange={(ev) => handleChange(ev, 'userName')}
         />
         <TextField
+          placeholder="Name"
           required
           id="outlined-required"
           label="Name"
           onChange={(ev) => handleChange(ev, 'name')}
         />
         <TextField
+          placeholder="Surname"
           required
           id="outlined-required"
           label="Surname"
           onChange={(ev) => handleChange(ev, 'surname')}
         />
         <TextField
+          placeholder="mail"
           required
           id="outlined-required"
           label="e-mail"
           onChange={(ev) => handleChange(ev, 'email')}
         />
         <TextField
+          placeholder="phone"
           id="outlined"
           label="phone"
           onChange={(ev) => handleChange(ev, 'phone')}
         />
         <TextField
+          placeholder="Province"
           required
           id="outlined-required"
           label="province"
           onChange={(ev) => handleChange(ev, 'province')}
         />
         <TextField
+          placeholder="Password"
           required
           id="outlined-password"
           label="Password"

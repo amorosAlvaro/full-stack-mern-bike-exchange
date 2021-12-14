@@ -42,12 +42,14 @@ const Login = function Login() {
       />
       <div className="login-gird--text">
         <TextField
+          placeholder="User Name"
           required
           className="login-gird--text__field"
           label="Name"
           onChange={(ev) => handleChange(ev, 'userName')}
         />
         <TextField
+          placeholder="Password"
           required
           className="login-gird--text__field"
           label="Password"

@@ -20,8 +20,6 @@ const Details = function Details() {
 
   const dispatch = useDispatch();
   const bikes = useSelector((store) => store.bikes);
-  console.log({ bikes });
-  // eslint-disable-next-line no-unused-vars
   const bike = bikes.filter((element) => element._id === id);
 
   useEffect(() => {

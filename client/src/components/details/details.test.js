@@ -17,36 +17,6 @@ jest.mock('../../redux/action.creators', () => ({
   loadBikeById: jest.fn()
 }));
 
-// describe('Given the component Details', () => {
-//   describe('when component is instantiated', () => {
-//     test('then it should be rendered', () => {
-//       const history = createMemoryHistory();
-//       history.push('/details/222');
-//       console.log('HISTORY:', history);
-//       // location={history.location} navigator={history}
-
-//       render(
-//         <Provider store={configureStore({
-//           bikes: [{
-//             id: '222',
-//             make: 'Honda',
-//             owner: { name: 'Alvaro', surname: 'Alvaro' }
-//           }, {
-//             id: '1111',
-//             make: 'Pedro',
-//             owner: { name: 'B', surname: 'C' }
-//           }]
-//         })}
-//         >
-//           <Router>
-//             <Details />
-//           </Router>
-//         </Provider>
-//       );
-//     });
-//   });
-// });
-
 describe('Testing Details rendering', () => {
   const bikes = [
     {
@@ -59,5 +29,7 @@ describe('Testing Details rendering', () => {
 
   test('Should be rendered', () => {
     expect(screen.getByText(/Details/i)).toBeInTheDocument();
+    expect(screen.getByText(/pepe/i)).toBeInTheDocument();
+    expect(screen.getAllByRole('img')).toHaveLength(1);
   });
 });
