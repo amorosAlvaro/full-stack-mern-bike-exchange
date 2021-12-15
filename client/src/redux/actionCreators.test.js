@@ -25,8 +25,7 @@ describe('Given the action creator file', () => {
   const user = {
     name: 'test',
     lastname: 'test',
-    email: 'test@',
-    password: 'test'
+    email: 'test@'
   };
 
   const userLogin = {

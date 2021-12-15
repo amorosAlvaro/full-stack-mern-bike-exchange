@@ -1,7 +1,8 @@
 # TODO TODAY:
 
 ## Sonar Qube
-C:\sonar-scanner-4.6.2.2472-windows\bin\sonar-scanner.bat -D"sonar.projectKey=Final-project-bikes" -D"sonar.sources=." -D"sonar.host.url=http://127.0.0.1:9000" -D"sonar.login=996660002f365fe05cb9ced28b7d086c384ca389"
+C:\sonar-scanner-4.6.2.2472-windows\bin\sonar-scanner.bat -D"sonar.projectKey=Finall-Full-Stack" -D"sonar.sources=." -D"sonar.host.url=http://127.0.0.1:9000" -D"sonar.login=f07b48249c716ebb824376095b967785a818ed7b"
+
 
 ## Learn how to mock set state
 
