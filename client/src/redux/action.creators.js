@@ -17,14 +17,6 @@ export function loadBikes(config) {
 
 export function loadBikeById(bikes) {
   return { type: actionTypes.LOAD_BIKES, bikes };
-
-  /* return async (dispatch) => {
-    try {
-      dispatch({ type: actionTypes.LOAD_BIKES, bikes });
-    } catch (error) {
-      dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
-    }
-  }; */
 }
 
 export function loadOwnedBikes(header) {

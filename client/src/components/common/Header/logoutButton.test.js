@@ -1,14 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { render, screen, fireEvent } from '../../../utils/test.utils';
-
-import DeleteButton from './DeleteButton';
+import LogoutButton from './LogoutButton';
 
 describe('Given the deleteFavoriteButton component', () => {
-  render(<DeleteButton _id="1" token="1" />);
+  render(<LogoutButton />);
 
   test('when render the star icon should appear', () => {
-    const addFavoriteButton = screen.getByPlaceholderText('delete-button');
+    const addFavoriteButton = screen.getByPlaceholderText('logout-button');
     fireEvent.click(addFavoriteButton);
-    expect(screen.getByPlaceholderText(/delete-button/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText(/logout-button/i)).toBeInTheDocument();
   });
 });

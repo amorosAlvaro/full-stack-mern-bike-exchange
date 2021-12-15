@@ -169,7 +169,7 @@ const AddBike = function AddBike() {
                   key={value}
                   disablePadding
                 >
-                  <ListItemButton role={undefined} onClick={handleToggle(value)} dense>
+                  <ListItemButton role={undefined} onClick={handleToggle(value)} dense placeholder="checkbox">
                     <ListItemIcon>
                       <Checkbox
                         edge="start"

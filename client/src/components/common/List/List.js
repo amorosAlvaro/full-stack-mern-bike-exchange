@@ -17,6 +17,8 @@ import { Link } from 'react-router-dom';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
+import './List.scss';
+
 const List = function List({ list, type }) {
   const token = useSelector((store) => store.login);
 
@@ -40,7 +42,7 @@ const List = function List({ list, type }) {
               </span>
 )}
             subheader={(
-              <span>
+              <span className="subheader">
                 {item.owner.province}
                 {' '}
                 |
@@ -65,7 +67,7 @@ const List = function List({ list, type }) {
 
           <CardContent>
 
-            <Typography variant="body2" color="text.secondary" component="p">
+            <Typography variant="body2" color="text.secondary" component="p" className="description" sx={{ fontSize: 12 }}>
               {item.change}
             </Typography>
 

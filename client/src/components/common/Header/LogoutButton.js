@@ -10,7 +10,7 @@ const LogoutButton = function LogoutButton() {
   };
 
   return (
-    <button type="button" className="header__user-btn" onClick={handleLogout}>
+    <button type="button" className="header__user-btn" onClick={handleLogout} placeholder="logout-button">
       <img src={logoutIcon} alt="login" className="header__user-img" />
     </button>
   );

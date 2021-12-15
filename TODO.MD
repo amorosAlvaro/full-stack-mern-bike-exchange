@@ -5,6 +5,9 @@ C:\sonar-scanner-4.6.2.2472-windows\bin\sonar-scanner.bat -D"sonar.projectKey=Fi
 
 ## Learn how to mock set state
 
+## Correct backend tests
+
+
 
 ## CSS
 
