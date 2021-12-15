@@ -5,7 +5,6 @@ import { registerUser } from './user.services';
 jest.mock('axios');
 
 describe('When register user is called', () => {
-  const token = '11';
   const user = {
     name: '2',
     password: {}

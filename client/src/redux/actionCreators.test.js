@@ -1,6 +1,7 @@
+/* eslint-disable max-len */
 import axios from 'axios';
 import {
-  loadBikes, loadBikeById, loadOwnedBikes, loadFavoriteBikes, deleteBike, deleteBikeFromFavorite, addBikeToFavorite, logUser, logOutUser
+  loadBikes, loadBikeById, loadOwnedBikes, loadFavoriteBikes, deleteBike, deleteBikeFromFavorite, addBikeToFavorite, logUser
 } from './action.creators';
 import actionTypes from './action.types';
 
@@ -16,20 +17,6 @@ describe('Given the action creator file', () => {
   const bike = {
     _id: '2',
     owner: {}
-  };
-  const favorites = [{
-    _id: '2',
-    owner: {}
-  }];
-
-  const user = {
-    name: 'test',
-    lastname: 'test',
-    email: 'test@'
-  };
-
-  const userLogin = {
-    token: 'test@'
   };
 
   const dispatch = jest.fn();
@@ -62,7 +49,6 @@ describe('Given the action creator file', () => {
   describe('When loadBikeById is called', () => {
     test('it should dispatch the bikes array', () => {
       loadBikeById({ bike });
-    //   expect(loadBikeById).toHaveBeenCalled();
     });
   });
 

@@ -36,7 +36,10 @@ const Details = function Details() {
       <div>
         <List list={bikes} type="details" />
       </div>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{
+        flexGrow: 1, display: 'flex', flexDirection: 'col', alignItems: 'flex-start'
+      }}
+      >
         <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
           <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className="owner-data">
             <Grid item xs={6}>

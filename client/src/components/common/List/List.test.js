@@ -1,8 +1,7 @@
 /* eslint-disable import/no-unresolved */
 import { render, screen } from '@testing-library/react';
-import useSelector, { Provider } from 'react-redux';
-import * as redux from 'react-redux';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import configureStore from '../../../redux/store/index';
 import List from './List';
 

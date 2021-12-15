@@ -3,8 +3,6 @@ import FavoriteButton from './FavoriteButton';
 
 describe('Given the favorite button component', () => {
   test('when render the star icon should appear', () => {
-    const _id = '11';
-
     const favorites = [{
       _id: '11'
     }];
