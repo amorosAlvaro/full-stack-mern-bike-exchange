@@ -1,12 +1,13 @@
+/* eslint-disable no-unused-vars */
 import axios from 'axios';
 import actionTypes from './action.types';
 
-export function loadBikes() {
-  const api = 'http://localhost:3030';
+const api = 'http://localhost:3030';
 
+export function loadBikes(config) {
   return async (dispatch) => {
     try {
-      const { data: bikes } = await axios.get(`${api}/bikes`);
+      const { data: bikes } = await axios.get(`${api}/bikes`, config);
       dispatch({ type: actionTypes.LOAD_BIKES, bikes });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
@@ -14,9 +15,11 @@ export function loadBikes() {
   };
 }
 
-export function loadOwnedBikes(header) {
-  const api = 'http://localhost:3030';
+export function loadBikeById(bikes) {
+  return { type: actionTypes.LOAD_BIKES, bikes };
+}
 
+export function loadOwnedBikes(header) {
   return async (dispatch) => {
     try {
       const { data: bikes } = await axios.get(`${api}/bikes/owned`, header);
@@ -27,22 +30,7 @@ export function loadOwnedBikes(header) {
   };
 }
 
-// export function loadFavoriteBikes(header) {
-//   const api = 'http://localhost:3030';
-
-//   return async (dispatch) => {
-//     try {
-//       const { data: bikes } = await axios.get(`${api}/bikes/favorite`, header);
-//       dispatch({ type: actionTypes.LOAD_BIKES, bikes });
-//     } catch (error) {
-//       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
-//     }
-//   };
-// }
-
 export function loadFavoriteBikes(header) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data: favorites } = await axios.get(`${api}/bikes/favorite`, header);
@@ -54,11 +42,9 @@ export function loadFavoriteBikes(header) {
 }
 
 export function deleteBike(config) {
-  const api = 'http://localhost:3030';
   return async (dispatch) => {
     try {
       const data = await axios.delete(`${api}/bikes/owned`, config);
-      console.log('action creator:', data);
       dispatch({ type: actionTypes.DELETE_BIKE, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
@@ -67,8 +53,6 @@ export function deleteBike(config) {
 }
 
 export function deleteBikeFromFavorite(config) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data } = await axios.delete(`${api}/bikes/favorite`, config);
@@ -79,11 +63,9 @@ export function deleteBikeFromFavorite(config) {
   };
 }
 export function addBikeToFavorite(bikeId, headers) {
-  const url = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${url}/bikes/favorite`, bikeId, headers);
+      const { data } = await axios.post(`${api}/bikes/favorite`, bikeId, headers);
       dispatch({ type: actionTypes.ADD_TO_FAVORITES, data });
     } catch (error) {
       dispatch({ type: actionTypes.FAILED_TO_LOAD, error });
@@ -92,8 +74,6 @@ export function addBikeToFavorite(bikeId, headers) {
 }
 
 export function logUser(userData) {
-  const api = 'http://localhost:3030';
-
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${api}/login`, userData);

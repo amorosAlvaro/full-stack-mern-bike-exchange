@@ -12,6 +12,9 @@ module.exports = mongoose.model(
     bike_model: {
       type: String,
     },
+    class: {
+      type: String,
+    },
     km: {
       type: Number,
     },
@@ -21,8 +24,11 @@ module.exports = mongoose.model(
     year: {
       type: Number,
     },
-    change: {
+    change: [{
       type: Array,
+    }],
+    description: {
+      type: String,
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -41,7 +47,6 @@ module.exports = mongoose.model(
     cloudinary_id: {
       type: String,
     },
-
     display: { type: Boolean, default: true },
   }),
 );

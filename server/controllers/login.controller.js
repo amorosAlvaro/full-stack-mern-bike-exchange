@@ -15,11 +15,8 @@ async function logUser(req, res) {
       return jwToken;
     }
   } catch {
-    res.status(401).json({ message: 'Invalid user or passwd' });
+    res.status(402).json({ message: 'Invalid user or passwd' });
   }
-  return res.status(401).json({ message: 'Invalid user or passwd' });
 }
 
 module.exports = { logUser };
-
-// .json({ _id: user._id, userName: user.userName, token: jwToken })

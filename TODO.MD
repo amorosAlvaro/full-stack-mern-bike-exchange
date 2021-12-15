@@ -1,34 +1,30 @@
 # TODO TODAY:
 
-
-## Details Component
-
-## Add delete function for owned bikes
-
-## Home Component
+## Sonar Qube
+C:\sonar-scanner-4.6.2.2472-windows\bin\sonar-scanner.bat -D"sonar.projectKey=Finall-Full-Stack" -D"sonar.sources=." -D"sonar.host.url=http://127.0.0.1:9000" -D"sonar.login=f07b48249c716ebb824376095b967785a818ed7b"
 
 
+## Learn how to mock set state
+
+## Correct backend tests
+
+
+
+## CSS
 
 # TODO TOMORROW:
+
+
+## Add delay to linked routes
+
 
 ## Check eslint configuration for back 
 
 ## In register/addbike check for completed fields, atching passwords etc...
 
-## Bug if i fail to log in two times in a row
-
-## Do porpper login incons/routes
-
-
-## Change colors
-
-## Check which tests can be recycled
 
 # TODO ONE DAY:
 
 ## NEED TO ADAPT BACKEND TESTS
 
-## Check how to delete images when deleting bikes
 
-## Delete image controllers
-# Doubts

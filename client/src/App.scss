@@ -13,7 +13,7 @@ html {
 
 body {
   font-size: 1.6rem;
-  font-family: 'Sintony', sans-serif;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
 h1,
@@ -22,14 +22,16 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Pacifico', cursive;
+  font-family: Arial, Verdana, Tahoma, sans-serif;
 }
 
 main {
   padding: 5%;
-  width: 90%;
+  height: auto;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: $primary-background;
+  align-items: center ;
+  background-color: #eeeeee;
 }

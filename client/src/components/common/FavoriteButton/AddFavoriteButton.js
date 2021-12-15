@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-expressions */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { SvgIcon } from '@mui/material';
 import StarBorderIcon from '@mui/icons-material/StarBorder';
@@ -7,6 +9,7 @@ import { addBikeToFavorite } from '../../../redux/action.creators';
 
 const AddFavoriteButton = function AddFavoriteButton({ _id }) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const token = useSelector((store) => store.login);
 
@@ -22,14 +25,11 @@ const AddFavoriteButton = function AddFavoriteButton({ _id }) {
       _id
     };
 
-    dispatch(addBikeToFavorite(bikeId, headers));
+    token ? dispatch(addBikeToFavorite(bikeId, headers)) : navigate('../login');
   };
 
   return (
-    <button type="button" label="button" onClick={handleAddFavorite}>
-      <SvgIcon component={StarBorderIcon} />
-    </button>
-
+    <SvgIcon placeholder="add-favorite-button" component={StarBorderIcon} onClick={handleAddFavorite} />
   );
 };
 

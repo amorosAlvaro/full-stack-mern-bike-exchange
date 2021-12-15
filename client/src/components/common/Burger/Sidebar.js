@@ -1,15 +1,21 @@
 import { useState } from 'react';
 import { slide as Menu } from 'react-burger-menu';
 import { Link } from 'react-router-dom';
-import star from '../../../assets/icons/start-white.svg';
-import home from '../../../assets/icons/white-house.svg';
-import user from '../../../assets/icons/user-icon.svg';
 import './Sidebar.scss';
+import { useSelector } from 'react-redux';
+import AddIcon from '@mui/icons-material/Add';
+import HomeIcon from '@mui/icons-material/Home';
+import StarIcon from '@mui/icons-material/Star';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+
+import { SvgIcon } from '@mui/material';
 
 const Sidebar = function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const handleClick = () => setIsOpen(false);
   const handleStateChange = (state) => setIsOpen(state.isOpen);
+  const token = useSelector((store) => store.login);
+
   return (
     <Menu
       OuterContainerId="main"
@@ -18,25 +24,22 @@ const Sidebar = function Sidebar() {
       onStateChange={(state) => handleStateChange(state)}
     >
       <Link to="/" onClick={handleClick}>
-        <img src={home} alt="home icon" className="slide__icon" />
+        <SvgIcon component={HomeIcon} alt="home icon" className="slide__icon" />
         Home
       </Link>
-      <Link to="/owned/addbike" onClick={handleClick}>
-        <img src={star} alt="favorites icon" className="slide__icon" />
-        Add Bike
-      </Link>
-      <Link to="/bikes" onClick={handleClick}>
-        <img src={user} alt="user icon" className="slide__icon" />
-        All bikes
-      </Link>
-      <Link to="/bikes/owned" onClick={handleClick}>
-        <img src={user} alt="user icon" className="slide__icon" />
-        Youre Bikes
-      </Link>
-      <Link to="/bikes/favorite" onClick={handleClick}>
-        <img src={user} alt="user icon" className="slide__icon" />
+      <Link to={token ? './bikes/favorite' : './login'} onClick={handleClick}>
+        <SvgIcon component={StarIcon} alt="user icon" className="slide__icon" />
         Favorite Bikes
       </Link>
+      <Link to={token ? './bikes/owned' : './login'} onClick={handleClick}>
+        <SvgIcon component={AssignmentTurnedInIcon} alt="user icon" className="slide__icon" />
+        Your Bikes
+      </Link>
+      <Link to={token ? './addbike' : './login'} onClick={handleClick}>
+        <SvgIcon component={AddIcon} alt="favorites icon" className="slide__icon" />
+        Add Bike
+      </Link>
+
     </Menu>
   );
 };

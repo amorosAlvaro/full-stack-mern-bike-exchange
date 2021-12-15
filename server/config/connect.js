@@ -13,7 +13,6 @@ async function mongoConnect(uriParam = uri) {
     console.log('Connected to mongo');
     return mongooseConnect;
   } catch (error) {
-    console.log(error);
     process.exit(1);
   }
 }

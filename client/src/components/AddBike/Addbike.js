@@ -3,11 +3,44 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useSelector } from 'react-redux';
-import { addBike } from '../../services/bike.services';
 import './AddBike.scss';
+import MenuItem from '@mui/material/MenuItem';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import Checkbox from '@mui/material/Checkbox';
+
+import { useNavigate } from 'react-router-dom';
+import { addBike } from '../../services/bike.services';
+
+const bikeClasses = [
+  {
+    value: 'CUSTOM',
+    label: 'CUSTOM'
+  },
+  {
+    value: 'NAKED',
+    label: 'NAKED'
+  },
+  {
+    value: 'SPORT',
+    label: 'SPORT'
+  },
+  {
+    value: 'SUPERMOTARD',
+    label: 'SUPERMOTARD'
+  },
+  {
+    value: 'TURISMO',
+    label: 'TURISMO'
+  }
+];
 
 const AddBike = function AddBike() {
   const token = useSelector((store) => store.login);
+  const navigate = useNavigate();
 
   const headers = {
     headers: {
@@ -20,9 +53,12 @@ const AddBike = function AddBike() {
     bike_model: '',
     km: '',
     year: '',
-    change: '',
-    image: ''
+    change: [],
+    description: '',
+    image: '',
+    class: ''
   });
+  const [checked, setChecked] = React.useState([]);
 
   const handleChange = (name) => (ev) => {
     const value = name === 'image' ? ev.target.files[0] : ev.target.value;
@@ -38,9 +74,28 @@ const AddBike = function AddBike() {
     formData.append('bike_model', bikeState.bike_model);
     formData.append('km', bikeState.km);
     formData.append('year', bikeState.year);
-    formData.append('change', bikeState.change);
+    formData.append('change', checked);
+    formData.append('description', bikeState.description);
+    formData.append('class', bikeState.class);
 
-    addBike(formData, headers);
+    const res = addBike(formData, headers);
+
+    if (res) {
+      navigate('../bikes/owned');
+    }
+  };
+
+  const handleToggle = (value) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
   };
 
   return (
@@ -56,6 +111,7 @@ const AddBike = function AddBike() {
         <div className="addbike-grid">
           <TextField
             required
+            placeholder="make-field"
             id="outlined-required"
             label="Make"
             value={bikeState.make}
@@ -67,6 +123,19 @@ const AddBike = function AddBike() {
             value={bikeState.bike_model}
             onChange={handleChange('bike_model')}
           />
+          <TextField
+            id="outlined-select-currency"
+            select
+            label="Class"
+            value={bikeState.class}
+            onChange={handleChange('class')}
+          >
+            {bikeClasses.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
           <TextField
             id="outlined"
             label="km"
@@ -82,11 +151,41 @@ const AddBike = function AddBike() {
             onChange={handleChange('year')}
           />
           <TextField
-            id="outlined-password"
-            label="Change"
-            value={bikeState.change}
-            onChange={handleChange('change')}
+            id="outlined-multiline-static"
+            label="Description"
+            multiline
+            rows={4}
+            defaultValue="Default Value"
+            value={bikeState.description}
+            onChange={handleChange('description')}
+
           />
+          <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#eeeeee' }}>
+            {['Custom', 'Naked', 'Sports', 'Turismo'].map((value) => {
+              const labelId = `checkbox-list-label-${value}`;
+
+              return (
+                <ListItem
+                  key={value}
+                  disablePadding
+                >
+                  <ListItemButton role={undefined} onClick={handleToggle(value)} dense placeholder="checkbox">
+                    <ListItemIcon>
+                      <Checkbox
+                        edge="start"
+                        checked={checked.indexOf(value) !== -1}
+                        tabIndex={-1}
+                        disableRipple
+                        inputProps={{ 'aria-labelledby': labelId }}
+                      />
+                    </ListItemIcon>
+                    <ListItemText id={labelId} primary={`${value}`} />
+                  </ListItemButton>
+
+                </ListItem>
+              );
+            })}
+          </List>
           {' '}
           <div className="mb-3">
             <input
@@ -97,12 +196,12 @@ const AddBike = function AddBike() {
               onChange={handleChange('image')}
             />
           </div>
-          <Button variant="outlined" onClick={handleSubmit}>
+          <Button variant="outlined" onClick={handleSubmit} placeholder="save-button">
             Save
           </Button>
         </div>
-
       </Box>
+
     </div>
   );
 };

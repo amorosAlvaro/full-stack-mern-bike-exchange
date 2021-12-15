@@ -12,37 +12,26 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import Skeleton from '@mui/material/Skeleton';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
-const List = function List({ list, type }) {
-  const { loading = false } = list;
+import './List.scss';
 
+const List = function List({ list, type }) {
   const token = useSelector((store) => store.login);
-  let headers;
-  if (token) {
-    headers = {
-      headers: {
-        'auth-token': token
-      }
-    };
-  }
 
   return (
-    <ImageList cols={1}>
+    <ImageList cols={1} className="bike-list">
       {list.map((item) => (
-        <Card key={item._id}>
+        <Card key={item._id} sx={{ width: 335, m: 2 }}>
           <CardHeader
-            action={
-            loading ? null : (
+            action={(
               <IconButton aria-label="settings">
                 { (type === 'owned') ? <DeleteButton _id={item._id} token={token} /> : <FavoriteButton _id={item._id} token={token} /> }
               </IconButton>
-            )
-          }
+            )}
             title={(
               <span>
                 {' '}
@@ -53,7 +42,7 @@ const List = function List({ list, type }) {
               </span>
 )}
             subheader={(
-              <span>
+              <span className="subheader">
                 {item.owner.province}
                 {' '}
                 |
@@ -67,29 +56,23 @@ const List = function List({ list, type }) {
               </span>
 )}
           />
-          {loading ? (
-            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-          ) : (
+          <Link className="recipes-nav__link" to={`/details/${item._id}`}>
             <CardMedia
               component="img"
               height="140"
               image={item.avatar}
               alt="Nicola Sturgeon on a TED talk stage"
             />
-          )}
+          </Link>
 
           <CardContent>
-            {loading ? (
-              <>
-                <Skeleton animation="wave" height={10} style={{ marginBottom: 6 }} />
-                <Skeleton animation="wave" height={10} width="80%" />
-              </>
-            ) : (
-              <Typography variant="body2" color="text.secondary" component="p">
-                {item.change}
-              </Typography>
-            )}
+
+            <Typography variant="body2" color="text.secondary" component="p" className="description" sx={{ fontSize: 12 }}>
+              {item.change}
+            </Typography>
+
           </CardContent>
+
         </Card>
       ))}
     </ImageList>
