@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-underscore-dangle */
 const Bike = require('../models/bike.model');
 const cloudinary = require('../config/cloudinary');
