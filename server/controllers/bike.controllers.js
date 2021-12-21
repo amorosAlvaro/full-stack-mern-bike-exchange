@@ -1,12 +1,10 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-underscore-dangle */
+
 const Bike = require('../models/bike.model');
 const cloudinary = require('../config/cloudinary');
 
 async function getAllBikes(req, res, next) {
-  const query = req.body;
   try {
+    const query = req.body;
     const bikes = await Bike.find(query).populate([
       {
         path: 'owner',
@@ -14,7 +12,7 @@ async function getAllBikes(req, res, next) {
       },
     ]);
 
-    res.json(bikes);
+    res.status(201).json(bikes);
   } catch (error) {
     next(error);
   }
