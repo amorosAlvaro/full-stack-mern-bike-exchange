@@ -99,7 +99,7 @@ async function getOwnedBikes(req, res, next) {
         bikesFiltered.push(bikes[index]);
       }
     });
-    res.json(bikesFiltered);
+    res.status(200).json(bikesFiltered);
   } catch (error) {
     next(error);
   }
@@ -119,7 +119,7 @@ async function getFavoriteBikes(req, res, next) {
         bikesFiltered.push(bikes[index]);
       });
     });
-    res.json(bikesFiltered);
+    res.status(200).json(bikesFiltered);
   } catch (error) {
     next(error);
   }
