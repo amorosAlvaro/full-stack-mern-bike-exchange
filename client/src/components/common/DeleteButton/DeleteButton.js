@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import Stack from '@mui/material/Stack';
 import { useDispatch } from 'react-redux';

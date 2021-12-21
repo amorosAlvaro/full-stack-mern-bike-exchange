@@ -1,4 +1,3 @@
-/* eslint-disable import/no-unresolved */
 import { render, screen, fireEvent } from '../../utils/test.utils';
 import AddBike from './AddBike';
 
@@ -20,20 +19,8 @@ describe('Given the component Addbike', () => {
 
 test('Save data button is rendered', () => {
   render(<AddBike />);
+
   const saveButton = screen.getByPlaceholderText('save-button');
 
   fireEvent.click(saveButton);
 });
-
-// test('toggle function', () => {
-//   render(<AddBike />);
-
-//   const checkbox = screen.getByPlaceholderText('checkbox');
-//   fireEvent.change(checkbox, { target: { value: 1 } });
-
-//   const isChecked = checkbox.checked;
-//   fireEvent.click(checkbox, {
-//     target: { checked: 1 }
-//   });
-//   expect(checkbox.checked).toEqual(isChecked);
-// });

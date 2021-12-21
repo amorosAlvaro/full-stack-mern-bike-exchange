@@ -1,3 +1,6 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
 const Bike = require('../models/bike.model');
 const cloudinary = require('../config/cloudinary');
 
@@ -17,7 +20,6 @@ async function getAllBikes(req, res, next) {
   }
 }
 
-// Gets bike info from user & ownerID from token (PROTECTED)
 async function postBike(req, res, next) {
   try {
     const result = await cloudinary.uploader.upload(req.file.path);
@@ -42,13 +44,11 @@ async function postBike(req, res, next) {
   }
 }
 
-// Checks if user and owner are the same. Gets id to delete from user
 async function deleteBike(req, res, next) {
   try {
     const bike = await Bike.findById(req.body._id);
     await cloudinary.uploader.destroy(bike.cloudinary_id);
 
-    console.log('Constroler Input:', req.body);
     await Bike.findByIdAndDelete(req.body._id);
     res.status(201).json(req.body._id);
   } catch (error) {
@@ -56,19 +56,6 @@ async function deleteBike(req, res, next) {
   }
 }
 
-// async function deleteBike(req, res, next) {
-//   const tokenUserId = req.user._id;
-//   const bikeOwnerId = req.body.owner;
-//   if (tokenUserId) {
-//     await Bike.findByIdAndDelete(req.body._id);
-//     res.status(202).json();
-//   } else {
-//     next(new Error());
-//   }
-// }
-
-// SAVE NEXT NEED TO BE ASYNC? // DO WE NEED SAVE HERE?
-// Needs bikeID from body and userID from token
 async function addBikeToFavorites(req, res, next) {
   const bikeId = req.body;
   const tokenUserId = req.user;
@@ -77,7 +64,6 @@ async function addBikeToFavorites(req, res, next) {
     const bike = await Bike.findById(bikeId);
     bike.favorites = [...bike.favorites, tokenUserId];
     bike.save();
-    console.log('RES FROM SERVER', bike);
     res.json(bike);
   } else {
     next(new Error());
@@ -95,10 +81,8 @@ async function deleteBikeFromFavorites(req, res, next) {
       .filter((item) => item !== userId._id);
     bike.favorites = favoriteFiltered;
     bike.save();
-    console.log('RES FROM DELETEFAVORITE CONTROLLER:', bike);
     res.json(bike);
   } else {
-    console.log('error in controler');
     next(new Error());
   }
 }

@@ -1,4 +1,3 @@
-import { Provider } from 'react-redux';
 import { render, screen } from './utils/test.utils';
 
 import App from './App';
