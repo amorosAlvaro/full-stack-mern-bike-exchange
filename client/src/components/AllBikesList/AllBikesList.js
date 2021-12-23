@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TextField from '@mui/material/TextField';
 import { loadBikes, loadFavoriteBikes } from '../../redux/action.creators';
-import List from '../common/List/List';
+import Card from '../common/Card/Card';
 import './AllBikesList.scss';
 
 const AllBikesList = function AllBikesList() {
@@ -52,7 +52,7 @@ const AllBikesList = function AllBikesList() {
           />
         </div>
       </section>
-      <List list={list} type="allBikes" />
+      <Card list={list} type="allBikes" />
 
     </>
 

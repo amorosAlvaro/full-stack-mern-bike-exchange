@@ -6,7 +6,6 @@ const { mongoConnect } = require('./config/connect');
 const userRouter = require('./routes/users.routes');
 const loginRouter = require('./routes/login.routes');
 const bikeRouter = require('./routes/bikes.routes');
-const imageRouter = require('./routes/image.routes');
 
 const { PORT } = process.env;
 const app = express();
@@ -20,5 +19,17 @@ app.use(cors());
 app.use('/users', userRouter);
 app.use('/login', loginRouter);
 app.use('/bikes', bikeRouter);
-app.use('/image', imageRouter);
+
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 401;
+  next(error);
+});
+app.use((error, req, res) => {
+  res.status(error.status || 500);
+  res.json({
+    error: error.message
+  });
+});
+
 app.listen(PORT);

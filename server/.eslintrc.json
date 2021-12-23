@@ -13,5 +13,14 @@
       "ecmaVersion": 13
   },
   "rules": {
+    "comma-dangle": [2, "never"],
+    "linebreak-style": 0,
+    "global-require": 0,
+    "eslint linebreak-style": [0, "error", "windows"],
+    "import/prefer-default-export": "off",
+    "default-param-last": "off",
+    "react/prop-types": "off",
+    "no-underscore-dangle": "off",
+    "camelcase": "off"
   }
 }

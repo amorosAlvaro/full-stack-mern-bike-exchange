@@ -5,7 +5,7 @@ import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
-import List from '../common/List/List';
+import Card from '../common/Card/Card';
 import { loadBikeById } from '../../redux/action.creators';
 import './Details.scss';
 
@@ -34,7 +34,7 @@ const Details = function Details() {
         <h2>Details</h2>
       </div>
       <div>
-        <List list={bikes} type="details" />
+        <Card list={bikes} type="details" />
       </div>
       <Box sx={{
         flexGrow: 1, display: 'flex', flexDirection: 'col', alignItems: 'flex-start'

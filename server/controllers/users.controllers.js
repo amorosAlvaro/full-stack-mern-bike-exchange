@@ -6,21 +6,20 @@ async function addUser(req, res, next) {
     const user = req.body;
     user.password = await bcrypt.hash(req.body.password, 10);
     const newUser = User.create(user);
-    res.json(newUser);
-    // res.status(201).send(newUser);
+    res.status(200).json(newUser);
   } catch (error) {
     next(error);
   }
 }
 
-function deleteUser(req, res, next) {
-  User.findByIdAndDelete(req.user._id).then((result) => {
-    if (result) {
-      res.status(202).json({ deleteId: req.user._id });
-    } else {
-      res.status(404).json({ message: 'User not found' });
-    }
-  });
+async function deleteUser(req, res, next) {
+  try {
+    const userId = req.user._id;
+    await User.findByIdAndDelete(userId);
+    res.status(200).json(userId);
+  } catch (error) {
+    next(error);
+  }
 }
 
 module.exports = { addUser, deleteUser };
