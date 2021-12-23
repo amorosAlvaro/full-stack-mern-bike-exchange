@@ -18,17 +18,13 @@ async function getAllBikes(req, res, next) {
 
 async function postBike(req, res, next) {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
+    const { secure_url, public_id } = await cloudinary.uploader.upload(req.file.path);
     const {
-      make,
-      bike_model,
-      km,
-      year,
-      change,
-      description,
-      owner
+      make, bike_model, km, year, change, description
     } = req.body;
-    const newBike = Bike.create({
+    const owner = req.user;
+
+    const newBike = await Bike.create({
       make,
       bike_model,
       km,
@@ -36,8 +32,8 @@ async function postBike(req, res, next) {
       change,
       description,
       owner,
-      avatar: result.secure_url,
-      cloudinary_id: result.public_id
+      avatar: secure_url,
+      cloudinary_id: public_id
     });
     res.status(201).json(newBike);
   } catch (error) {

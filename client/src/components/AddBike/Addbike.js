@@ -63,12 +63,12 @@ const AddBike = function AddBike() {
     }
   };
 
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggle = (option) => () => {
+    const currentIndex = checked.indexOf(option);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(option);
     } else {
       newChecked.splice(currentIndex, 1);
     }
@@ -109,8 +109,8 @@ const AddBike = function AddBike() {
             onChange={handleChange('class')}
           >
             {bikeClasses.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
+              <MenuItem key={option} value={option}>
+                {option}
               </MenuItem>
             ))}
           </TextField>
@@ -139,25 +139,25 @@ const AddBike = function AddBike() {
 
           />
           <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#eeeeee' }}>
-            {['Custom', 'Naked', 'Sports', 'Supermotard', 'Turismo', 'Trail', 'Enduro', 'Motocross', 'Trial'].map((value) => {
-              const labelId = `checkbox-list-label-${value}`;
+            {bikeClasses.map((option) => {
+              const labelId = `checkbox-list-label-${option}`;
 
               return (
                 <ListItem
-                  key={value}
+                  key={option}
                   disablePadding
                 >
-                  <ListItemButton role={undefined} onClick={handleToggle(value)} dense placeholder="checkbox">
+                  <ListItemButton role={undefined} onClick={handleToggle(option)} dense placeholder="checkbox">
                     <ListItemIcon>
                       <Checkbox
                         edge="start"
-                        checked={checked.indexOf(value) !== -1}
+                        checked={checked.indexOf(option) !== -1}
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ 'aria-labelledby': labelId }}
                       />
                     </ListItemIcon>
-                    <ListItemText id={labelId} primary={`${value}`} />
+                    <ListItemText id={labelId} primary={`${option}`} />
                   </ListItemButton>
 
                 </ListItem>
