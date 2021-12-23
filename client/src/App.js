@@ -4,7 +4,7 @@ import Header from './components/common/Header/Header';
 import './App.scss';
 import Sidebar from './components/common/Burger/Sidebar';
 import SignUp from './components/SignUp/SignUp';
-import AddBike from './components/AddBike/AddBike';
+import AddBike from './components/AddBike/Addbike';
 import AllBikesList from './components/AllBikesList/AllBikesList';
 import OwnedBikesList from './components/OwnedBIkesList/OwnedBikesList';
 import FavoriteBikesList from './components/FavoriteBikesList/FavoriteBIkesList';

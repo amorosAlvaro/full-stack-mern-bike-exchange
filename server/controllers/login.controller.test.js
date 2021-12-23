@@ -3,8 +3,6 @@ const User = require('../models/user.model');
 const auth = require('../helpers/auth.helpers');
 const { logUser } = require('./login.controller');
 
-// WHAT IS THE DIFFERENCE BETWEEN RESOLVE AND RETURN? and mockImplementation?
-
 jest.mock('../models/user.model');
 jest.mock('../helpers/auth.helpers');
 
@@ -31,14 +29,14 @@ describe('Given the login controller', () => {
           _id: '546n5jk6nk53l54',
           username: 'Alvaro',
           password: '1234',
-          email: 'alvaro.amoros23@gmail.com',
+          email: 'alvaro.amoros23@gmail.com'
         });
         auth.checkPasswd = jest.fn().mockResolvedValue(true);
         auth.createJWT = jest.fn().mockImplementation(() => 'token');
         req.body = {
           username: 'Paco',
           email: 'paco@email.com',
-          password: '123',
+          password: '123'
         };
       });
       test('userModel exists and has the method findOne', () => {
@@ -58,7 +56,7 @@ describe('Given the login controller', () => {
         req.body = {
           userName: 'John',
           email: '',
-          password: '',
+          password: ''
         };
       });
       test('User should not be logged', async () => {
@@ -73,7 +71,7 @@ describe('Given the login controller', () => {
         auth.checkPasswd = jest.fn().mockResolvedValue(false);
         req.body = {
           username: 'John',
-          password: '',
+          password: ''
         };
       });
       test('userModel exists and has method findOne', () => {

@@ -7,46 +7,46 @@ module.exports = mongoose.model(
   Schema({
     make: {
       type: String,
-      required: true,
+      required: true
     },
     bike_model: {
-      type: String,
+      type: String
     },
     class: {
-      type: String,
+      type: String
     },
     km: {
-      type: Number,
+      type: Number
     },
     province: {
-      type: String,
+      type: String
     },
     year: {
-      type: Number,
+      type: Number
     },
     change: [{
-      type: Array,
+      type: Array
     }],
     description: {
-      type: String,
+      type: String
     },
     owner: {
       type: Schema.Types.ObjectId,
-      ref: 'User',
+      ref: 'User'
     },
     favorites: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User',
-      },
+        ref: 'User'
+      }
     ],
     avatar: {
-      type: String,
+      type: String
     },
 
     cloudinary_id: {
-      type: String,
+      type: String
     },
-    display: { type: Boolean, default: true },
-  }),
+    display: { type: Boolean, default: true }
+  })
 );

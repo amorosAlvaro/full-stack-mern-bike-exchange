@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 const jwt = require('jsonwebtoken');
 const auth = require('../helpers/auth.helpers');
 const User = require('../models/user.model');

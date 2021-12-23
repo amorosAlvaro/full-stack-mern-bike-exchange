@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadFavoriteBikes } from '../../redux/action.creators';
-import List from '../common/List/List';
+import Card from '../common/Card/Card';
 
 const FavoriteBikesList = function FavoriteBikesList() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const FavoriteBikesList = function FavoriteBikesList() {
   return (
     <>
       <h2>Favorites</h2>
-      <List list={favorites} type="favorite" />
+      <Card list={favorites} type="favorite" />
     </>
   );
 };

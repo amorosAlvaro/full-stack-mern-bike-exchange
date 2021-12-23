@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadOwnedBikes } from '../../redux/action.creators';
-import List from '../common/List/List';
+import Card from '../common/Card/Card';
 
 const OwnedBikesList = function OwnedBikesList() {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const OwnedBikesList = function OwnedBikesList() {
   return (
     <>
       <h2>Your Bikes</h2>
-      <List list={bikes} type="owned" />
+      <Card list={bikes} type="owned" />
     </>
   );
 };

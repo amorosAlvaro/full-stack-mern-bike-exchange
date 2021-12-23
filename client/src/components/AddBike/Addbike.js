@@ -11,32 +11,10 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
-
 import { useNavigate } from 'react-router-dom';
-import { addBike } from '../../services/bike.services';
 
-const bikeClasses = [
-  {
-    value: 'CUSTOM',
-    label: 'CUSTOM'
-  },
-  {
-    value: 'NAKED',
-    label: 'NAKED'
-  },
-  {
-    value: 'SPORT',
-    label: 'SPORT'
-  },
-  {
-    value: 'SUPERMOTARD',
-    label: 'SUPERMOTARD'
-  },
-  {
-    value: 'TURISMO',
-    label: 'TURISMO'
-  }
-];
+import { addBike } from '../../services/bike.services';
+import bikeClasses from '../../assets/data/bikeClasses';
 
 const AddBike = function AddBike() {
   const token = useSelector((store) => store.login);
@@ -161,7 +139,7 @@ const AddBike = function AddBike() {
 
           />
           <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#eeeeee' }}>
-            {['Custom', 'Naked', 'Sports', 'Turismo'].map((value) => {
+            {['Custom', 'Naked', 'Sports', 'Supermotard', 'Turismo', 'Trail', 'Enduro', 'Motocross', 'Trial'].map((value) => {
               const labelId = `checkbox-list-label-${value}`;
 
               return (
