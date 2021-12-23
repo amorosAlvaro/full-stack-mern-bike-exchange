@@ -3,9 +3,10 @@ import axios from 'axios';
 async function addBike(bike, header) {
   const url = 'http://localhost:3030';
   try {
-    await axios.post(`${url}/bikes/owned`, bike, header);
+    const res = await axios.post(`${url}/bikes/owned`, bike, header);
+    return res;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 }
 

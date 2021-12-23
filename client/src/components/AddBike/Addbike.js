@@ -12,7 +12,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import { useNavigate } from 'react-router-dom';
-
 import { addBike } from '../../services/bike.services';
 import bikeClasses from '../../assets/data/bikeClasses';
 
@@ -36,44 +35,39 @@ const AddBike = function AddBike() {
     image: '',
     class: ''
   });
-  const [checked, setChecked] = React.useState([]);
 
   const handleChange = (name) => (ev) => {
     const value = name === 'image' ? ev.target.files[0] : ev.target.value;
     setBikeState({ ...bikeState, [name]: value });
   };
 
-  const handleSubmit = (ev) => {
-    ev.preventDefault();
+  const handleToggle = (option) => () => {
+    const currentIndex = bikeState.change.indexOf(option);
+    const newChecked = [...bikeState.change];
+    if (currentIndex === -1) {
+      newChecked.push(option);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+    setBikeState({ ...bikeState, change: newChecked });
+  };
 
+  const handleSubmit = async () => {
     const formData = new FormData();
     formData.append('image', bikeState.image);
     formData.append('make', bikeState.make);
     formData.append('bike_model', bikeState.bike_model);
     formData.append('km', bikeState.km);
     formData.append('year', bikeState.year);
-    formData.append('change', checked);
+    formData.append('change', bikeState.change);
     formData.append('description', bikeState.description);
     formData.append('class', bikeState.class);
 
-    const res = addBike(formData, headers);
+    const res = await addBike(formData, headers);
 
     if (res) {
       navigate('../bikes/owned');
     }
-  };
-
-  const handleToggle = (option) => () => {
-    const currentIndex = checked.indexOf(option);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(option);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
   };
 
   return (
@@ -151,7 +145,7 @@ const AddBike = function AddBike() {
                     <ListItemIcon>
                       <Checkbox
                         edge="start"
-                        checked={checked.indexOf(option) !== -1}
+                        checked={bikeState.change.indexOf(option) !== -1}
                         tabIndex={-1}
                         disableRipple
                         inputProps={{ 'aria-labelledby': labelId }}
