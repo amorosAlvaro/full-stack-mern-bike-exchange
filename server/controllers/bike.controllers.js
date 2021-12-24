@@ -91,7 +91,7 @@ async function getOwnedBikes(req, res, next) {
     ]);
     const bikesFiltered = [];
     bikes.forEach((item, index) => {
-      if (item.owner.toString() === userId) {
+      if (item.owner._id.toString() === userId) {
         bikesFiltered.push(bikes[index]);
       }
     });
