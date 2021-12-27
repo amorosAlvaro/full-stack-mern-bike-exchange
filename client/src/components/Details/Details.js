@@ -40,22 +40,27 @@ const Details = function Details() {
         flexGrow: 1, display: 'flex', flexDirection: 'col', alignItems: 'flex-start'
       }}
       >
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }}>
-          <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} className="owner-data">
-            <Grid item xs={6}>
-              <Item className="owner-data__item">{`Owner: ${bikes[0].owner.name} ${bikes[0].owner.surname}`}</Item>
+        <Grid container spacing={{ xs: 2, md: 3 }} columns={1}>
+          <Grid
+            container
+            rowSpacing={1}
+            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            className="owner-data"
+          >
+            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].owner.name} ${bikes[0].owner.surname}`}</Item>
             </Grid>
-            <Grid item xs={6}>
-              <Item className="owner-data__item">{`Province: ${bikes[0].owner.province}`}</Item>
+            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Item className="owner-data__item" sx={{ width: 348 }}>{` ${bikes[0].owner.province}`}</Item>
             </Grid>
-            <Grid item xs={6}>
-              <Item className="owner-data__item">{`${bikes[0].owner.phone}`}</Item>
+            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Item className="owner-data__item" sx={{ width: 348 }}>{` ${bikes[0].owner.phone}`}</Item>
             </Grid>
-            <Grid item xs={6}>
-              <Item className="owner-data__item">{`${bikes[0].owner.email}`}</Item>
+            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].owner.email}`}</Item>
             </Grid>
-            <Grid item xs={6}>
-              <Item className="owner-data__item">{`${bikes[0].description}`}</Item>
+            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].description}`}</Item>
             </Grid>
           </Grid>
         </Grid>

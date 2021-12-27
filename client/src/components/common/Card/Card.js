@@ -11,8 +11,6 @@ import { Link } from 'react-router-dom';
 import DeleteButton from '../DeleteButton/DeleteButton';
 import FavoriteButton from '../FavoriteButton/FavoriteButton';
 
-import './Card.scss';
-
 const List = function List({ list, type }) {
   const token = useSelector((store) => store.login);
 
