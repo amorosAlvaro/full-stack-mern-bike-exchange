@@ -15,7 +15,7 @@ const List = function List({ list, type }) {
   const token = useSelector((store) => store.login);
 
   return (
-    <ImageList cols={1} className="bike-list">
+    <ImageList cols={1}>
       {list.map((item) => (
         <Card key={item._id} sx={{ width: 335, m: 2 }}>
           <CardHeader
@@ -25,16 +25,15 @@ const List = function List({ list, type }) {
               </IconButton>
             )}
             title={(
-              <span>
-                {' '}
+              <Typography color="text.secondary" sx={{ fontSize: '1.8rem' }}>
                 {item.make}
                 {' '}
                 {item.bike_model}
+              </Typography>
 
-              </span>
 )}
             subheader={(
-              <span className="subheader">
+              <Typography color="text.secondary" sx={{ fontSize: '1.2rem' }}>
                 {item.owner.province}
                 {' '}
                 |
@@ -45,26 +44,22 @@ const List = function List({ list, type }) {
                 {' '}
                 {item.km}
                 km
-              </span>
+              </Typography>
 )}
           />
-          <Link className="recipes-nav__link" to={`/details/${item._id}`}>
+          <Link to={`/details/${item._id}`}>
             <CardMedia
               component="img"
               height="140"
               image={item.avatar}
-              alt="Nicola Sturgeon on a TED talk stage"
+              alt="Motorbike picture"
             />
           </Link>
-
           <CardContent>
-
-            <Typography variant="body2" color="text.secondary" component="p" className="description" sx={{ fontSize: 12 }}>
+            <Typography color="text.secondary" sx={{ fontSize: '1.5rem' }}>
               {item.change}
             </Typography>
-
           </CardContent>
-
         </Card>
       ))}
     </ImageList>

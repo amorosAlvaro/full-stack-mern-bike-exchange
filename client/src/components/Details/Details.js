@@ -1,21 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { styled } from '@mui/material/styles';
 import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Card from '../common/Card/Card';
 import { loadBikeById } from '../../redux/action.creators';
-import './Details.scss';
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
-  fontSize: '1.2rem'
-}));
+import { Item, GridOwnerData } from './styles';
 
 const Details = function Details() {
   const { id } = useParams();
@@ -30,42 +20,27 @@ const Details = function Details() {
 
   return (
     <>
-      <div>
-        <h2>Details</h2>
-      </div>
-      <div>
-        <Card list={bikes} type="details" />
-      </div>
-      <Box sx={{
-        flexGrow: 1, display: 'flex', flexDirection: 'col', alignItems: 'flex-start'
-      }}
-      >
-        <Grid container spacing={{ xs: 2, md: 3 }} columns={1}>
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            className="owner-data"
-          >
-            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].owner.name} ${bikes[0].owner.surname}`}</Item>
-            </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Item className="owner-data__item" sx={{ width: 348 }}>{` ${bikes[0].owner.province}`}</Item>
-            </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Item className="owner-data__item" sx={{ width: 348 }}>{` ${bikes[0].owner.phone}`}</Item>
-            </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].owner.email}`}</Item>
-            </Grid>
-            <Grid item xs={2} sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Item className="owner-data__item" sx={{ width: 348 }}>{`${bikes[0].description}`}</Item>
-            </Grid>
-          </Grid>
+      <h2>Details</h2>
+      <Card list={bikes} type="details" />
+      <Box>
+        <Grid>
+          <GridOwnerData>
+            <Item>{`${bikes[0].owner.name} ${bikes[0].owner.surname}`}</Item>
+          </GridOwnerData>
+          <GridOwnerData>
+            <Item>{` ${bikes[0].owner.province}`}</Item>
+          </GridOwnerData>
+          <GridOwnerData>
+            <Item>{` ${bikes[0].owner.phone}`}</Item>
+          </GridOwnerData>
+          <GridOwnerData>
+            <Item>{`${bikes[0].owner.email}`}</Item>
+          </GridOwnerData>
+          <GridOwnerData>
+            <Item>{`${bikes[0].description}`}</Item>
+          </GridOwnerData>
         </Grid>
       </Box>
-
     </>
   );
 };
