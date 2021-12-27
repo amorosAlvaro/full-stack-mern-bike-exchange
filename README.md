@@ -16,3 +16,5 @@ Welcome to my project, Bike Exchange. This app, developed with React, Redux, Mon
 7. Run `npm i`
 
 8. Run `npm start`
+
+9. `Now you are ready to upload your bikes!`
