@@ -46,7 +46,7 @@ async function deleteBike(req, res, next) {
     const bike = await Bike.findById(req.body._id);
     await cloudinary.uploader.destroy(bike.cloudinary_id);
     await Bike.findByIdAndDelete(bike._id);
-    res.status(201).json(bike);
+    res.status(201).json(req.body._id);
   } catch (error) {
     next(error);
   }
