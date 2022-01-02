@@ -90,6 +90,7 @@ const AddBike = function AddBike() {
             onChange={handleChange('make')}
           />
           <TextField
+            placeholder="model"
             id="outlined-required"
             label="Model"
             value={bikeState.bike_model}
@@ -123,6 +124,7 @@ const AddBike = function AddBike() {
             onChange={handleChange('year')}
           />
           <TextField
+            placeholder="description"
             id="outlined-multiline-static"
             label="Description"
             multiline
@@ -134,8 +136,8 @@ const AddBike = function AddBike() {
           />
           <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#eeeeee' }}>
             {bikeClasses.map((option) => {
-              const labelId = `checkbox-list-label-${option}`;
-
+              const labelId = `.
+              -${option}`;
               return (
                 <ListItem
                   key={option}
@@ -153,7 +155,6 @@ const AddBike = function AddBike() {
                     </ListItemIcon>
                     <ListItemText id={labelId} primary={`${option}`} />
                   </ListItemButton>
-
                 </ListItem>
               );
             })}
@@ -173,7 +174,6 @@ const AddBike = function AddBike() {
           </Button>
         </div>
       </Box>
-
     </div>
   );
 };

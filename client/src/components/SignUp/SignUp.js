@@ -23,8 +23,10 @@ const SingUp = function SignUp() {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    registerUser(registerState);
-    navigate('../login');
+    const res = registerUser(registerState);
+    if (res) {
+      navigate('../login');
+    }
   };
 
   const handleChange = (evt, control) => {
@@ -94,7 +96,6 @@ const SingUp = function SignUp() {
           Send
         </Button>
       </div>
-
     </Box>
   );
 };
